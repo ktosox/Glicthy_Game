@@ -1,15 +1,25 @@
 extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+const MOTION_SPEED = 10 # Pixels/second
+var counter = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+#func _input(event):
+#	if event.is_action_pressed("ui_accept"):
+#		counter += 1
+#		$Label.text = String(counter)
 
+func _physics_process(delta):
+	var motion = Vector2()
+	
+	if Input.is_action_pressed("ui_up"):
+		motion += Vector2(0, -1)
+	if Input.is_action_pressed("ui_down"):
+		motion += Vector2(0, 1)
+	if Input.is_action_pressed("ui_left"):
+		motion += Vector2(-1, 0)
+	if Input.is_action_pressed("ui_right"):
+		motion += Vector2(1, 0)
+	
+	motion = motion.normalized() * MOTION_SPEED
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	move_and_collide(motion)
