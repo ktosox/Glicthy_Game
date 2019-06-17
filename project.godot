@@ -19,6 +19,10 @@ config/name="Glitched_Level"
 run/main_scene="res://Levels/ExampleLevel.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GM="*res://GameManager.tscn"
+
 [display]
 
 window/stretch/mode="2d"
