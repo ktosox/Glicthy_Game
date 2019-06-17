@@ -1,11 +1,20 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Resources/Artwork/Tile_Texture_source.png" type="Texture" id=1]
-[ext_resource path="res://GameParts/Environment/Gate_North.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Entities/Enemies/EnemyB.tscn" type="PackedScene" id=4]
-[ext_resource path="res://GameParts/Environment/Gate_South.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Bullets/BulletA.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Resources/Artwork/cewka_A_finol.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Artwork/cewka_B_finol.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Artwork/procesor_A_finol.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Artwork/procesor_B_finol.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Artwork/Tiles/tile_seamless.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Artwork/Tiles/tile_seamless6.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Artwork/Tiles/tile_seamless5.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Artwork/Tiles/tile_seamless4.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Artwork/Tiles/tile_seamless3.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Artwork/Tiles/tile_seamless2.png" type="Texture" id=11]
+[ext_resource path="res://GameParts/Environment/Gate_North.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/Enemies/EnemyB.tscn" type="PackedScene" id=14]
+[ext_resource path="res://GameParts/Environment/Gate_South.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 900, 0, 900, 200, 0, 200 )
@@ -14,9 +23,21 @@ points = PoolVector2Array( 0, 0, 900, 0, 900, 200, 0, 200 )
 points = PoolVector2Array( 0, 0, 100, 0, 100, 100, 0, 100 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 50, 200, 200, 200, 200, 300, 50, 300 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 50, 250, 150, 250, 150, 350, 50, 350 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 250, 0, 250, 200, 0, 200 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 250, 0, 250, 200, 0, 200 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 300, 0, 300, 100, 0, 100 )
 
-[sub_resource type="TileSet" id=4]
+[sub_resource type="TileSet" id=8]
 3/name = "Tile_Texture_source.png 3"
 3/texture = ExtResource( 1 )
 3/tex_offset = Vector2( 0, 0 )
@@ -29,7 +50,7 @@ points = PoolVector2Array( 0, 0, 300, 0, 300, 100, 0, 100 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 3/z_index = 0
@@ -125,36 +146,154 @@ points = PoolVector2Array( 0, 0, 300, 0, 300, 100, 0, 100 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 16/z_index = 0
+17/name = "cewka_A_finol.png 17"
+17/texture = ExtResource( 2 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 0, 0, 250, 300 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+17/z_index = 0
+18/name = "cewka_B_finol.png 18"
+18/texture = ExtResource( 3 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 0, 0, 200, 350 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+18/z_index = 0
+19/name = "procesor_A_finol.png 19"
+19/texture = ExtResource( 4 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 0, 0, 250, 200 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 0, 0 )
+19/navigation_offset = Vector2( 0, 0 )
+19/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+19/z_index = 0
+20/name = "procesor_B_finol.png 20"
+20/texture = ExtResource( 5 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 0, 0, 250, 200 )
+20/tile_mode = 0
+20/occluder_offset = Vector2( 0, 0 )
+20/navigation_offset = Vector2( 0, 0 )
+20/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+20/z_index = 0
+21/name = "tile_seamless.png 21"
+21/texture = ExtResource( 6 )
+21/tex_offset = Vector2( 0, 0 )
+21/modulate = Color( 1, 1, 1, 1 )
+21/region = Rect2( 0, 0, 256, 256 )
+21/tile_mode = 0
+21/occluder_offset = Vector2( 0, 0 )
+21/navigation_offset = Vector2( 0, 0 )
+21/shapes = [  ]
+21/z_index = 0
+22/name = "tile_seamless6.png 22"
+22/texture = ExtResource( 7 )
+22/tex_offset = Vector2( 0, 0 )
+22/modulate = Color( 1, 1, 1, 1 )
+22/region = Rect2( 0, 0, 256, 256 )
+22/tile_mode = 0
+22/occluder_offset = Vector2( 0, 0 )
+22/navigation_offset = Vector2( 0, 0 )
+22/shapes = [  ]
+22/z_index = 0
+23/name = "tile_seamless5.png 23"
+23/texture = ExtResource( 8 )
+23/tex_offset = Vector2( 0, 0 )
+23/modulate = Color( 1, 1, 1, 1 )
+23/region = Rect2( 0, 0, 256, 256 )
+23/tile_mode = 0
+23/occluder_offset = Vector2( 0, 0 )
+23/navigation_offset = Vector2( 0, 0 )
+23/shapes = [  ]
+23/z_index = 0
+24/name = "tile_seamless4.png 24"
+24/texture = ExtResource( 9 )
+24/tex_offset = Vector2( 0, 0 )
+24/modulate = Color( 1, 1, 1, 1 )
+24/region = Rect2( 0, 0, 256, 256 )
+24/tile_mode = 0
+24/occluder_offset = Vector2( 0, 0 )
+24/navigation_offset = Vector2( 0, 0 )
+24/shapes = [  ]
+24/z_index = 0
+25/name = "tile_seamless3.png 25"
+25/texture = ExtResource( 10 )
+25/tex_offset = Vector2( 0, 0 )
+25/modulate = Color( 1, 1, 1, 1 )
+25/region = Rect2( 0, 0, 256, 256 )
+25/tile_mode = 0
+25/occluder_offset = Vector2( 0, 0 )
+25/navigation_offset = Vector2( 0, 0 )
+25/shapes = [  ]
+25/z_index = 0
+26/name = "tile_seamless2.png 26"
+26/texture = ExtResource( 11 )
+26/tex_offset = Vector2( 0, 0 )
+26/modulate = Color( 1, 1, 1, 1 )
+26/region = Rect2( 0, 0, 256, 256 )
+26/tile_mode = 0
+26/occluder_offset = Vector2( 0, 0 )
+26/navigation_offset = Vector2( 0, 0 )
+26/shapes = [  ]
+26/z_index = 0
 
 [node name="ExampleLevel" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 0, -1 )
-tile_set = SubResource( 4 )
+tile_set = SubResource( 8 )
 cell_size = Vector2( 50, 50 )
 format = 1
-tile_data = PoolIntArray( 131094, 1610612746, 0, 131112, 1610612746, 0, 131130, 1610612746, 0, 327680, 1, 0, 589837, 12, 0, 589863, 12, 0, 720916, -1610612723, 0, 852001, 11, 0, 852015, 13, 0, 917528, 12, 0, 1048580, -1073741814, 0, 1114122, -1610612721, 0, 1114148, 12, 0, 1114158, 11, 0, 1310778, -1073741814, 0, 1376272, 11, 0, 1376276, 11, 0, 1376286, 9, 0, 1507375, 14, 0, 1703945, 12, 0, 1703951, -1610612723, 0, 1703977, 11, 0, 1769494, 16, 0, 1769497, 16, 0, 1769501, 16, 0, 1835061, -1610612723, 0, 1900588, 12, 0, 2031636, 11, 0, 2031649, 15, 0, 2228228, -1073741814, 0, 2359315, 12, 0, 2424862, 3, 0, 2424868, 3, 0, 2490381, -1610612723, 0, 2490396, -1610612723, 0, 2490417, 11, 0, 2490426, -1073741814, 0, 2818087, -1610612723, 0, 2883628, 15, 0, 3014710, -1610612723, 0, 3080202, 12, 0, 3080212, -1610612721, 0, 3407876, -1073741814, 0, 3670034, 1610612746, 0, 3670052, 1610612746, 0, 3670070, 1610612746, 0, 3670074, -1073741814, 0 )
+tile_data = PoolIntArray( 131094, 1610612746, 0, 131112, 1610612746, 0, 131130, 1610612746, 0, 327680, 1, 0, 589837, 12, 0, 589863, 12, 0, 720916, -1610612723, 0, 852001, 11, 0, 852015, 13, 0, 917528, 12, 0, 1048580, -1073741814, 0, 1114122, -1610612721, 0, 1114148, 12, 0, 1245230, 19, 0, 1310778, -1073741814, 0, 1376272, 11, 0, 1376276, 11, 0, 1376281, 20, 0, 1376286, 9, 0, 1703945, 12, 0, 1703951, -1610612723, 0, 1703977, 11, 0, 1769494, 16, 0, 1769497, 16, 0, 1769501, 19, 0, 1835061, -1610612723, 0, 1900588, 18, 0, 1966116, 17, 0, 2031636, 17, 0, 2228228, -1073741814, 0, 2293813, 26, 0, 2424862, 3, 0, 2490381, -1610612723, 0, 2490396, -1610612723, 0, 2490417, 11, 0, 2490426, -1073741814, 0, 2621493, 23, 0, 2818087, -1610612723, 0, 2883628, 19, 0, 2949128, 26, 0, 2949133, 21, 0, 2949173, 23, 0, 3080212, -1610612721, 0, 3276808, 25, 0, 3276813, 22, 0, 3276842, 23, 0, 3276847, 23, 0, 3276848, 24, 0, 3276853, 22, 0, 3407876, -1073741814, 0, 3670034, 1610612746, 0, 3670052, 1610612746, 0, 3670070, 1610612746, 0, 3670074, -1073741814, 0 )
 
-[node name="Gate_North" parent="." instance=ExtResource( 2 )]
+[node name="Gate_North" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1636.73, 454.089 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource( 13 )]
 position = Vector2( 1060.83, 1942.95 )
 
-[node name="Enemy2" parent="." instance=ExtResource( 4 )]
+[node name="Enemy2" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1720, 1360 )
 
-[node name="Enemy3" parent="." instance=ExtResource( 4 )]
+[node name="Enemy3" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1190, 1210 )
 
-[node name="Enemy4" parent="." instance=ExtResource( 4 )]
+[node name="Enemy4" parent="." instance=ExtResource( 14 )]
 position = Vector2( 2400, 2000 )
 
-[node name="Gate_South" parent="." instance=ExtResource( 5 )]
+[node name="Gate_South" parent="." instance=ExtResource( 15 )]
 position = Vector2( 1589.53, 2684.39 )
-
-[node name="BulletA" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1479.8, 2225.61 )
-
-[node name="BulletA2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1560.63, 2165.14 )

@@ -6,6 +6,9 @@ var direction = Vector2()
 var motion = Vector2()
 var moving = false
 
+var bulletAScene = load("res://Entities/Bullets/BulletA.tscn")
+
+
 func _ready():
 	startWalking()
 
@@ -26,7 +29,7 @@ func _physics_process(delta):
 	
 
 func startWalking():
-	direction = Vector2(randf() - randf(),randf() - randf())
+	direction = Vector2((randf()*2)-1,(randf()*2)-1)
 	moving = true
 	$TimerMoving.start()
 	pass
@@ -34,6 +37,9 @@ func startWalking():
 
 func stopWalking():
 	moving = false
+	var newBullet = bulletAScene.instance()
+	newBullet.global_position = self.global_position
+	get_parent().add_child(newBullet)
 	$TimerStanding.start()
 	pass
 
