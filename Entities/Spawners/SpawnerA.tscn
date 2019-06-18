@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entities/Spawners/SpawnerA.gd" type="Script" id=1]
+
+[node name="SpawnerA" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TimerAutoSpawn" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 6.05013, -13.6097 )
+scale = Vector2( 0.426163, 0.381246 )
+color = Color( 0.305882, 0.686275, 0.447059, 1 )
+polygon = PoolVector2Array( 42.0231, -12.2347, 32.2432, 9.87851, 8.77155, -10.2163, -23.991, -11.7124, -32.3039, 23.8195, -14.7002, 41.648, 21.6217, 49.0016, 43.0771, 82.0362, 38.9904, 102.81, 3.91248, 120.52, -57.7316, 113.959, -53.3307, 86.5306, -19.5863, 99.4048, 11.4048, 101.108, 10.3832, 79.9928, -21.9703, 70.7976, -47.9517, 58.4315, -53.3307, 33.9146, -57.2426, 7.95563, -50.3967, -26.1756, -20.9486, -39.5446, -1.49733, -41.1354, 21.9744, -37.2323 )
+[connection signal="timeout" from="TimerAutoSpawn" to="." method="_on_TimerAutoSpawn_timeout"]

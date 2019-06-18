@@ -22,5 +22,10 @@ one_shot = true
 
 [node name="TimerStanding" type="Timer" parent="."]
 one_shot = true
+
+[node name="TimerDying" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 [connection signal="timeout" from="TimerMoving" to="." method="_on_TimerMoving_timeout"]
 [connection signal="timeout" from="TimerStanding" to="." method="_on_TimerStanding_timeout"]
+[connection signal="timeout" from="TimerDying" to="." method="_on_TimerDying_timeout"]

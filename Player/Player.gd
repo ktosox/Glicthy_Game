@@ -1,12 +1,13 @@
 extends KinematicBody2D
 
-const MOTION_SPEED = 10 # Pixels/second
-var counter = 0
+const MOTION_SPEED = 10 
 
-#func _input(event):
-#	if event.is_action_pressed("ui_accept"):
-#		counter += 1
-#		$Label.text = String(counter)
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		GM.pause_game()
+
+func _ready():
+	GM.playerOriginal = self
 
 func _physics_process(delta):
 	var motion = Vector2()
