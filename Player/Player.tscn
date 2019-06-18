@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Overlay.tscn" type="PackedScene" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://Player/glitch_effect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/new_shadermaterial.tres" type="Material" id=3]
+[ext_resource path="res://Resources/Artwork/placeholder_player.png" type="Texture" id=4]
+[ext_resource path="res://Player/glitch_effect.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 30 )
@@ -24,6 +25,7 @@ drag_margin_bottom = 1.0
 editor_draw_drag_margin = true
 
 [node name="Overlay" parent="Camera2D" instance=ExtResource( 2 )]
+visible = false
 margin_left = -517.684
 margin_top = -299.073
 margin_right = 512.316
@@ -31,9 +33,13 @@ margin_bottom = 300.927
 rect_min_size = Vector2( 800, 600 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+material = ExtResource( 3 )
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 50, 50 )
+region_filter_clip = true
 
-[node name="glitch_effect" parent="Sprite" instance=ExtResource( 4 )]
+[node name="glitch_effect" parent="Sprite" instance=ExtResource( 5 )]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

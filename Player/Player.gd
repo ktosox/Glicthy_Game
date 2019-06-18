@@ -2,14 +2,25 @@ extends KinematicBody2D
 
 const MOTION_SPEED = 10 
 
+var glitchOffset = Vector2()
+var glitchState = 1
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		GM.pause_game()
+	if event.is_action_pressed("ui_home"):
+		pass
 
 func _ready():
 	GM.playerOriginal = self
 
 func _physics_process(delta):
+	glitchOffset.x = glitchOffset.x + delta * glitchState *10
+	$Sprite.material.set_shader_param("offset",glitchOffset)
+	if (glitchOffset.x>50.0):
+		glitchState = -1
+	if (glitchOffset.x<-50.0):
+		glitchState = 1
 	var motion = Vector2()
 	
 	if Input.is_action_pressed("ui_up"):
@@ -24,3 +35,4 @@ func _physics_process(delta):
 	motion = motion.normalized() * MOTION_SPEED
 
 	move_and_collide(motion)
+

@@ -28,9 +28,17 @@ GM="*res://GameManager.tscn"
 window/stretch/mode="2d"
 window/stretch/aspect="keep_width"
 
+[layer_names]
+
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Walls"
+2d_physics/layer_4="Enemies"
+2d_physics/layer_5="Bullets"
+2d_physics/layer_6="BOSS"
+2d_physics/layer_7="Harmful"
+
 [rendering]
 
-quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"

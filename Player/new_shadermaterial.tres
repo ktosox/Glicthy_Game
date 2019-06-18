@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Player/new_shader.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/offset = Vector2( 30, 0 )
+shader_param/modulateA = Color( 0, 1, 0.109804, 0.627451 )
+shader_param/modulateB = Color( 0.458824, 0, 0.878431, 0.627451 )
