@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/glitch_effect.gd" type="Script" id=1]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "glitchSlide"
 length = 2.0
 loop = true
@@ -56,4 +56,4 @@ modulate = Color( 0.0784314, 0.611765, 0.611765, 0.705882 )
 show_behind_parent = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/glitchSlide = SubResource( 3 )
+anims/glitchSlide = SubResource( 1 )
