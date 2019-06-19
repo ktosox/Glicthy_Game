@@ -18,24 +18,25 @@ anchor_bottom = 1.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 0, 20 )
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
 
 [node name="Container" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 24.0
+margin_top = 19.0
 margin_right = 1024.0
-margin_bottom = 84.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 0, 60 )
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Container"]
-margin_right = 20.0
+margin_right = 60.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 20, 0 )
+rect_min_size = Vector2( 60, 0 )
 
 [node name="Panel" type="Panel" parent="VBoxContainer/Container"]
-margin_left = 24.0
-margin_right = 124.0
+editor/display_folded = true
+margin_left = 64.0
+margin_right = 164.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_vertical = 3
@@ -43,57 +44,56 @@ size_flags_vertical = 3
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Container/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Label" type="Label" parent="VBoxContainer/Container/Panel/CenterContainer"]
-margin_left = 21.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Container/Panel/CenterContainer"]
+margin_left = 34.0
 margin_top = 23.0
-margin_right = 79.0
+margin_right = 65.0
 margin_bottom = 37.0
-text = "STUFF : 8"
-__meta__ = {
-"_edit_lock_": true
-}
+
+[node name="LifeSign" type="Label" parent="VBoxContainer/Container/Panel/CenterContainer/HBoxContainer"]
+margin_right = 27.0
+margin_bottom = 14.0
+text = "Life:"
+
+[node name="HP" type="Label" parent="VBoxContainer/Container/Panel/CenterContainer/HBoxContainer"]
+margin_left = 31.0
+margin_right = 31.0
+margin_bottom = 14.0
+align = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/Container"]
-margin_left = 128.0
-margin_right = 148.0
+margin_left = 168.0
+margin_right = 188.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 20, 0 )
 
-[node name="Panel2" type="Panel" parent="VBoxContainer/Container"]
-margin_left = 152.0
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Container"]
+visible = false
+margin_left = 192.0
+margin_right = 960.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+value = 100.0
+rounded = true
+percent_visible = false
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/Container"]
+margin_left = 192.0
 margin_right = 252.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 100, 0 )
-size_flags_vertical = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Container/Panel2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Label" type="Label" parent="VBoxContainer/Container/Panel2/CenterContainer"]
-margin_left = 21.0
-margin_top = 23.0
-margin_right = 79.0
-margin_bottom = 37.0
-text = "STUFF : 3"
-__meta__ = {
-"_edit_lock_": true
-}
+rect_min_size = Vector2( 60, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 88.0
+margin_top = 83.0
 margin_right = 1024.0
 margin_bottom = 512.0
 size_flags_vertical = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+editor/display_folded = true
 margin_top = 516.0
 margin_right = 1024.0
 margin_bottom = 576.0
