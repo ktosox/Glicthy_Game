@@ -24,8 +24,6 @@ func _input(event):
 	if event.is_action_pressed("ui_home"):
 		if(phaseReady):
 			skillPhase()
-			phaseReady = false
-			$TimerPhaseCooldown.start()
 		pass
 
 func _ready():
@@ -58,6 +56,14 @@ func _physics_process(delta):
 
 func skillPhase():
 	print("PHASE!!!!!")
+	set_collision_layer_bit(1,false)
+	set_collision_mask_bit(3,false)
+	set_collision_mask_bit(4,false)
+	set_collision_mask_bit(5,false)
+	set_collision_mask_bit(6,false)
+	set_collision_mask_bit(7,false)
+	phaseReady = false
+	$TimerPhaseCooldown.start()
 	$Camera2D/Overlay.skillPhaseUsed()
 	pass
 
@@ -71,5 +77,11 @@ func fire_bullet():
 	pass
 
 func _on_TimerPhaseCooldown_timeout():
+	set_collision_layer_bit(1,true)
+	set_collision_mask_bit(3,true)
+	set_collision_mask_bit(4,true)
+	set_collision_mask_bit(5,true)
+	set_collision_mask_bit(6,true)
+	set_collision_mask_bit(7,true)
+	#code for exploding enemies player is standing in on materialisation goes here
 	phaseReady = true
-	pass # Replace with function body.

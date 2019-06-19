@@ -23,3 +23,8 @@ func _on_BulletPlayer_body_entered(body):
 func _on_TimerDeath_timeout():
 	self.queue_free()
 	pass # Replace with function body.
+
+
+func pop():
+	queue_free()
+	pass

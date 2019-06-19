@@ -1,19 +1,16 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Entities/Enemies/EnemyB.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/Spawners/SpawnerA.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Beacons/BeaconA.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Spawners/SpawnerA.tscn" type="PackedScene" id=3]
 
 [node name="ExampleLevel" type="Node2D"]
 
-[node name="EnemyB" parent="." instance=ExtResource( 1 )]
-position = Vector2( 626.553, 2200.14 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 503.147, 300.883 )
 
-[node name="EnemyB2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1559.01, 1692.9 )
+[node name="BeaconA" parent="." instance=ExtResource( 2 )]
+position = Vector2( 510.56, 67.3587 )
 
-[node name="SpawnerA" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1605.48, 2064.93 )
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1060.83, 1942.95 )
+[node name="SpawnerA" parent="." instance=ExtResource( 3 )]
+position = Vector2( 593.371, 68.5251 )

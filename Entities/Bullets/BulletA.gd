@@ -22,3 +22,7 @@ func _on_LifeTimer_timeout():
 
 func _on_DeathTimer_timeout():
 	self.queue_free()
+
+func pop():
+	queue_free()
+	pass

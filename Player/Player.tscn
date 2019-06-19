@@ -7,8 +7,9 @@
 [ext_resource path="res://Player/glitch_effect.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player/PlayerGun.tscn" type="PackedScene" id=6]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30, 30 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 32.6568
+height = 35.8578
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -28,14 +29,17 @@ drag_margin_bottom = 1.0
 editor_draw_drag_margin = true
 
 [node name="Overlay" parent="Camera2D" instance=ExtResource( 2 )]
-margin_left = -517.684
-margin_top = -299.073
-margin_right = 512.316
-margin_bottom = 300.927
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -515.0
+margin_top = -300.799
+margin_right = 514.0
+margin_bottom = 299.201
 rect_min_size = Vector2( 800, 600 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 3 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 50, 50 )
 region_filter_clip = true

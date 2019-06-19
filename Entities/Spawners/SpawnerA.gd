@@ -1,21 +1,23 @@
 extends Node2D
 
-var EnemyAScene = load("res://Entities/Enemies/EnemyA.tscn")
+var EnemyBScene = load("res://Entities/Enemies/EnemyB.tscn")
 
 
 func _ready():
+	startSpawning()
 	pass
 
 
 #func _process(delta):
 #	pass
 
-func spawnEnemyA():
-	var newEnemyA = EnemyAScene.instance()
-	newEnemyA.global_position = self.global_position
-	get_parent().add_child(newEnemyA)
+func spawnEnemyB():
+	var newEnemyB = EnemyBScene.instance()
+	newEnemyB.global_position = self.global_position
+	get_parent().add_child(newEnemyB)
 
 func startSpawning():
+	print("spawning started")
 	$TimerAutoSpawn.start()
 	pass
 
@@ -24,5 +26,5 @@ func stopSpawning():
 	pass
 
 func _on_TimerAutoSpawn_timeout():
-	spawnEnemyA()
+	spawnEnemyB()
 	pass
