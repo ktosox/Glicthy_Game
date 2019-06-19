@@ -27,6 +27,13 @@ func hideBossHP():
 	$VBoxContainer/Container/ProgressBar.visible = false
 	pass
 
-
 func updatePlayerHP(HP):
 	$VBoxContainer/Container/Panel/CenterContainer/HBoxContainer/HP.text = String(HP)
+	
+
+func skillPhaseUsed():
+	$VBoxContainer/CenterContainer/Panel/HBoxContainer/SkillPhase/AnimationPlayer.play("used")
+	pass
+
+func skillPhaseReady():
+	pass

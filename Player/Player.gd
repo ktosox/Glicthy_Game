@@ -3,6 +3,10 @@ extends KinematicBody2D
 
 var bulletPlayerScene = load("res://Entities/Bullets/BulletPlayer.tscn")
 
+var phaseReady = true
+
+
+
 const MOTION_SPEED = 10 
 
 
@@ -18,6 +22,10 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		GM.pause_game()
 	if event.is_action_pressed("ui_home"):
+		if(phaseReady):
+			skillPhase()
+			phaseReady = false
+			$TimerPhaseCooldown.start()
 		pass
 
 func _ready():
@@ -47,6 +55,12 @@ func _physics_process(delta):
 	
 	$PlayerGun.rotation = atan2(get_global_mouse_position().x - global_position.x, global_position.y - get_global_mouse_position().y) - self.rotation
 
+
+func skillPhase():
+	print("PHASE!!!!!")
+	$Camera2D/Overlay.skillPhaseUsed()
+	pass
+
 func fire_bullet():
 	var newBullet = bulletPlayerScene.instance()
 	newBullet.global_rotation = $PlayerGun.global_rotation
@@ -55,3 +69,7 @@ func fire_bullet():
 	newBullet.global_position.y -= cos($PlayerGun.global_rotation) *80
 	get_parent().add_child(newBullet)
 	pass
+
+func _on_TimerPhaseCooldown_timeout():
+	phaseReady = true
+	pass # Replace with function body.

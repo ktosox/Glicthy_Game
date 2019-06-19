@@ -47,3 +47,7 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="PlayerGun" parent="." instance=ExtResource( 6 )]
+
+[node name="TimerPhaseCooldown" type="Timer" parent="."]
+wait_time = 8.0
+[connection signal="timeout" from="TimerPhaseCooldown" to="." method="_on_TimerPhaseCooldown_timeout"]
