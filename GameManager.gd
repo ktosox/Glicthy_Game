@@ -1,18 +1,20 @@
 extends Node
 
 
-var playerHP
+var playerHP = 3
 
 var playerCurrent 
 
 var enemyCount
-var enemyCountMax
+var enemyCountMax = 50
 
 var mainMenuPath = ""
 
 var firstLevelPath = ""
 
 var pauseMenuScene = load("res://GameParts/PauseMenu/PauseMenu.tscn")
+
+var ganeOverMenuScene = load("res://GameParts/GameOverMenu/GameOverMenu.tscn")
 
 func _ready():
 	pass
@@ -33,7 +35,9 @@ func pause_game():
 	get_tree().paused = true
 
 func lose_game():
-	pass
+	var newGameOverMenu = ganeOverMenuScene.instance()
+	playerCurrent.add_child(newGameOverMenu)
+	get_tree().paused = true
 
 
 func win_game():
