@@ -21,7 +21,7 @@ func _input(event):
 		pass
 
 func _ready():
-	GM.playerOriginal = self
+	GM.playerCurrent = self
 
 func _physics_process(delta):
 	glitchOffset.x = glitchOffset.x + delta * glitchState *30

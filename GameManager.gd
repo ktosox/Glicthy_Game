@@ -3,7 +3,7 @@ extends Node
 
 var playerHP
 
-var playerOriginal 
+var playerCurrent 
 
 var enemyCount
 var enemyCountMax
@@ -29,7 +29,7 @@ func changeToFirstLevel():
 
 func pause_game():
 	var newPauseMenu = pauseMenuScene.instance()
-	playerOriginal.add_child(newPauseMenu)
+	playerCurrent.add_child(newPauseMenu)
 	get_tree().paused = true
 
 func lose_game():

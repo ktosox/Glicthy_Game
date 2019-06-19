@@ -36,6 +36,7 @@ window/stretch/aspect="keep_width"
 2d_physics/layer_5="Bullets"
 2d_physics/layer_6="BOSS"
 2d_physics/layer_7="Harmful"
+2d_physics/layer_8="Beacon"
 
 [rendering]
 
