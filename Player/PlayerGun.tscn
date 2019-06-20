@@ -3,6 +3,7 @@
 [node name="PlayerGun" type="Node2D"]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 scale = Vector2( 1, 0.400572 )
 color = Color( 0.431373, 0.431373, 0.431373, 1 )
 polygon = PoolVector2Array( -3.08731, -18.3826, 3.91667, -17.9307, 2.33513, -52.2728, 4.14261, -59.2768, -5.12074, -59.0509, -2.63545, -52.0469 )
