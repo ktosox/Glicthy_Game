@@ -29,12 +29,12 @@ func _ready():
 	GM.playerCurrent = self
 
 func _physics_process(delta):
-	glitchOffset.x = glitchOffset.x + delta * glitchState *30
-	$Sprite.material.set_shader_param("offset",glitchOffset)
-	if (glitchOffset.x>50.0):
-		glitchState = -1
-	if (glitchOffset.x<-50.0):
-		glitchState = 1
+#	glitchOffset.x = glitchOffset.x + delta * glitchState *30
+#	$Sprite.material.set_shader_param("offset",glitchOffset)
+#	if (glitchOffset.x>50.0):
+#		glitchState = -1
+#	if (glitchOffset.x<-50.0):
+#		glitchState = 1
 	var motion = Vector2()
 	
 	if Input.is_action_pressed("ui_up"):
@@ -60,18 +60,18 @@ func skillPhase():
 	set_collision_mask_bit(4,false)
 	set_collision_mask_bit(5,false)
 	set_collision_mask_bit(6,false)
-	set_collision_mask_bit(7,false)
 	phaseReady = false
 	$TimerPhaseCooldown.start()
 	$Camera2D/Overlay.skillPhaseUsed()
+	$Sprite.modulate.a = 0.4
 	pass
 
 func fire_bullet():
 	var newBullet = bulletPlayerScene.instance()
 	newBullet.global_rotation = $PlayerGun.global_rotation
 	newBullet.global_position = self.global_position
-	newBullet.global_position.x += sin($PlayerGun.global_rotation) *80
-	newBullet.global_position.y -= cos($PlayerGun.global_rotation) *80
+	newBullet.global_position.x += sin($PlayerGun.global_rotation) *70
+	newBullet.global_position.y -= cos($PlayerGun.global_rotation) *70
 	get_parent().add_child(newBullet)
 	pass
 
@@ -81,6 +81,7 @@ func _on_TimerPhaseCooldown_timeout():
 	set_collision_mask_bit(4,true)
 	set_collision_mask_bit(5,true)
 	set_collision_mask_bit(6,true)
-	set_collision_mask_bit(7,true)
 	#code for exploding enemies player is standing in on materialisation goes here
 	phaseReady = true
+	$Sprite.modulate.a = 1.0
+

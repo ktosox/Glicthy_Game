@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Overlay.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/new_shadermaterial.tres" type="Material" id=3]
-[ext_resource path="res://Player/Player.png" type="Texture" id=4]
-[ext_resource path="res://Player/glitch_effect.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Player/PlayerGun.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player/Player.png" type="Texture" id=3]
+[ext_resource path="res://Player/PlayerGun.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.0611, 29.8814 )
@@ -37,21 +35,19 @@ margin_bottom = 299.201
 rect_min_size = Vector2( 800, 600 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = ExtResource( 3 )
+position = Vector2( -1.1376, -1.1376 )
 scale = Vector2( 5, 5 )
-texture = ExtResource( 4 )
+z_as_relative = false
+texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 12, 12 )
 region_filter_clip = true
 
-[node name="glitch_effect" parent="Sprite" instance=ExtResource( 5 )]
-visible = false
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="PlayerGun" parent="." instance=ExtResource( 6 )]
+[node name="PlayerGun" parent="." instance=ExtResource( 4 )]
 
 [node name="TimerPhaseCooldown" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 5.0
 [connection signal="timeout" from="TimerPhaseCooldown" to="." method="_on_TimerPhaseCooldown_timeout"]

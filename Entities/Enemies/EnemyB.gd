@@ -73,7 +73,8 @@ func _on_TimerStanding_timeout():
 func _on_TimerDying_timeout():
 	self.queue_free()
 
-
+func pop():
+	self.queue_free()
 
 func _on_HitBox_body_entered(body):
 	damange()
