@@ -21,5 +21,4 @@ polygon = PoolVector2Array( -0.223846, -7.87415, -5.29377, -5.60142, -7.91615, -
 [node name="TimerDeath" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
-[connection signal="body_entered" from="." to="." method="_on_BulletPlayer_body_entered"]
 [connection signal="timeout" from="TimerDeath" to="." method="_on_TimerDeath_timeout"]

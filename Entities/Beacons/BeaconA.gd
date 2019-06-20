@@ -20,10 +20,10 @@ func damange():
 	print("oyuch")
 	HP -= 1
 	if (HP<0):
-		print("beacon down")
 		$TimerDying.start()
 		if(GateNumber != 0):
 			GM.openGate(GateNumber)
+			GateNumber = 0
 
 
 func _on_DetectionRange_body_entered(body):

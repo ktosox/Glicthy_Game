@@ -15,9 +15,7 @@ func _ready():
 #	pass
 
 
-func _on_BulletPlayer_body_entered(body):
-	print(body)
-	pass # Replace with function body.
+
 
 
 func _on_TimerDeath_timeout():

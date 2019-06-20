@@ -85,3 +85,7 @@ func _on_TimerPhaseCooldown_timeout():
 	phaseReady = true
 	$Sprite.modulate.a = 1.0
 
+func _on_HitBox_body_entered(body):
+	GM.playerHP -= 1
+	body.pop()
+	pass

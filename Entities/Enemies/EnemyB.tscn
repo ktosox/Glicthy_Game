@@ -7,7 +7,7 @@
 extents = Vector2( 29.8726, 29.9087 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 101.388
+radius = 80.6003
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 28.1929
@@ -53,7 +53,6 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource( 3 )
-[connection signal="body_entered" from="." to="." method="_on_EnemyB_body_entered"]
 [connection signal="timeout" from="TimerMoving" to="." method="_on_TimerMoving_timeout"]
 [connection signal="timeout" from="TimerStanding" to="." method="_on_TimerStanding_timeout"]
 [connection signal="timeout" from="TimerDying" to="." method="_on_TimerDying_timeout"]
