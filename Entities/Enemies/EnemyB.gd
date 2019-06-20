@@ -1,9 +1,11 @@
-extends KinematicBody2D
+extends RigidBody2D
 
-const MOTION_SPEED = 8
+var HP = 3
+
+const MOTION_SPEED = 8000
 
 var direction = Vector2()
-var motion = Vector2()
+
 var moving = false
 
 var bulletAScene = load("res://Entities/Bullets/BulletA.tscn")
@@ -18,14 +20,14 @@ func _ready():
 
 func _physics_process(delta):
 	if(moving):
-		motion = direction.normalized() * MOTION_SPEED
-		move_and_collide(motion)
+		linear_velocity = direction.normalized() * MOTION_SPEED * delta
 
 func startWalking():
 	#print(GM.playerCurrent)
 	#print($DetectionRange.get_overlapping_bodies())
-	scanForPlayer()
+	
 	if(enemyMode == 0):
+		scanForPlayer()
 		direction = Vector2((randf()*2)-1,(randf()*2)-1) #pick a direction
 	elif(enemyMode == 1):
 		direction = GM.playerCurrent.global_position-self.global_position
@@ -36,6 +38,7 @@ func startWalking():
 
 func stopWalking():
 	moving = false
+	linear_velocity = Vector2(0,0)
 	if (enemyMode == 1):
 		var newBullet = bulletAScene.instance()
 		newBullet.global_position = self.global_position
@@ -43,13 +46,20 @@ func stopWalking():
 	$TimerStanding.start()
 
 func startDying():
+	$HitBox.queue_free()
 	$TimerDying.start()
+	print ("wilhelm_screem.mp3.jpg.txt")
 	#add any death animation here
 
 func scanForPlayer():
 	if($DetectionRange.get_overlapping_bodies() != []):
 		enemyMode = 1
 	pass
+
+func damange():
+	HP -= 1
+	if(HP<1):
+		startDying()
 
 
 func _on_TimerMoving_timeout():
@@ -62,3 +72,10 @@ func _on_TimerStanding_timeout():
 
 func _on_TimerDying_timeout():
 	self.queue_free()
+
+
+
+func _on_HitBox_body_entered(body):
+	damange()
+	body.pop()
+	pass # Replace with function body.

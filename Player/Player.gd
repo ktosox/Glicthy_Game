@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 var bulletPlayerScene = load("res://Entities/Bullets/BulletPlayer.tscn")
 
 var phaseReady = true
