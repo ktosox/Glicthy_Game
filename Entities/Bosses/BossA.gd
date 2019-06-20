@@ -12,19 +12,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_TimerCheckForPlayer_timeout():
-	pass # Replace with function body.
-
-
-func _on_TimerTargeting_timeout():
-	pass # Replace with function body.
-
-
-func _on_TimerFiring_timeout():
-	pass # Replace with function body.
-
-
-func _on_TimerCooldown_timeout():
-	pass # Replace with function body.

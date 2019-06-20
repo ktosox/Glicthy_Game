@@ -1,9 +1,8 @@
 extends Node2D
 
-var waveCurrent = 0
 
-var spawnerList = []
 
+export var GateNumber = 0
 
 var HP = 5
 
@@ -17,20 +16,22 @@ func _ready():
 #	pass
 
 
-func addSpawner(spawnerToAdd):
-	spawnerList.append(spawnerToAdd)
-
 func damange():
 	print("oyuch")
 	HP -= 1
-	if (waveCurrent == 0):
-
-		waveCurrent = 1
 	if (HP<0):
 		print("beacon down")
+		$TimerDying.start()
+		if(GateNumber != 0):
+			GM.openGate(GateNumber)
 
 
 func _on_DetectionRange_body_entered(body):
 	damange()
 	body.pop()
+	pass # Replace with function body.
+
+
+func _on_TimerDying_timeout():
+	self.queue_free()
 	pass # Replace with function body.

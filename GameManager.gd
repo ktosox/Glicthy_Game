@@ -8,9 +8,12 @@ var playerCurrent
 var enemyCount
 var enemyCountMax = 50
 
-var mainMenuPath = ""
+var listAllGates = {0:null}
 
-var firstLevelPath = ""
+
+var mainMenuPath = "" #once added, main menu path should go here
+
+var firstLevelPath = "" # once added, first level path should go here
 
 var pauseMenuScene = load("res://GameParts/PauseMenu/PauseMenu.tscn")
 
@@ -44,6 +47,14 @@ func lose_game():
 func win_game():
 	pass
 
+# gate stuff
 
+func addGate(gateNumber, gateNode):
+	if(listAllGates.has(gateNumber)):
+		print("there can only be one gate: ",gateNumber," -this message was sponsored by: ", gateNode)
+	else:
+		listAllGates[gateNumber] = gateNode
 
+func openGate(gateNumber):
+	listAllGates[gateNumber].openGate()
 
