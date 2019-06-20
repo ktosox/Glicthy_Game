@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+var HP = 3
+
 const MOTION_SPEED = 8000
 
 var direction = Vector2()
@@ -44,13 +46,20 @@ func stopWalking():
 	$TimerStanding.start()
 
 func startDying():
+	$HitBox.queue_free()
 	$TimerDying.start()
+	print ("wilhelm_screem.mp3.jpg.txt")
 	#add any death animation here
 
 func scanForPlayer():
 	if($DetectionRange.get_overlapping_bodies() != []):
 		enemyMode = 1
 	pass
+
+func damange():
+	HP -= 1
+	if(HP<1):
+		startDying()
 
 
 func _on_TimerMoving_timeout():
@@ -63,3 +72,10 @@ func _on_TimerStanding_timeout():
 
 func _on_TimerDying_timeout():
 	self.queue_free()
+
+
+
+func _on_HitBox_body_entered(body):
+	damange()
+	body.pop()
+	pass # Replace with function body.
