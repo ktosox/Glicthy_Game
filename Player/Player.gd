@@ -89,3 +89,6 @@ func _on_HitBox_body_entered(body):
 	GM.playerHP -= 1
 	body.pop()
 	pass
+
+func pop():
+	print("something tired to pop the player like a bullet - this shouldnt happen :(")

@@ -48,12 +48,14 @@ func stopWalking():
 func startDying():
 	$HitBox.queue_free()
 	$TimerDying.start()
-	print ("wilhelm_screem.mp3.jpg.txt")
-	#add any death animation here
+	$Sprite.modulate.a = 0.2
+	$ExplosionC.emitting = true
 
 func scanForPlayer():
 	if($DetectionRange.get_overlapping_bodies() != []):
 		enemyMode = 1
+	else:
+		enemyMode = 0
 	pass
 
 func damange():
