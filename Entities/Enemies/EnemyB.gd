@@ -40,10 +40,9 @@ func stopWalking():
 	moving = false
 	linear_velocity = Vector2(0,0)
 	if (enemyMode == 1):
-		var newBullet = bulletAScene.instance()
-		newBullet.global_position = self.global_position
-		get_parent().add_child(newBullet)
-	$TimerStanding.start()
+		canonStart()
+	else:
+		$TimerStanding.start()
 
 func startDying():
 	$HitBox.queue_free()
@@ -53,6 +52,7 @@ func startDying():
 
 func scanForPlayer():
 	if($DetectionRange.get_overlapping_bodies() != []):
+		print("player spotted")
 		enemyMode = 1
 	else:
 		enemyMode = 0
@@ -62,6 +62,19 @@ func damange():
 	HP -= 1
 	if(HP<1):
 		startDying()
+
+func canonFire():
+	var newBullet = bulletAScene.instance()
+	newBullet.global_position = $Sprite/CanonLeft/Octagon/Sprite.global_position
+	get_parent().add_child(newBullet)
+	newBullet = bulletAScene.instance()
+	newBullet.global_position = $Sprite/CanonRight/Octagon/Sprite.global_position
+	get_parent().add_child(newBullet)
+
+
+func canonStart():
+	$AnimationPlayer.play("canon_extend")
+	pass
 
 
 func _on_TimerMoving_timeout():
@@ -76,9 +89,10 @@ func _on_TimerDying_timeout():
 	self.queue_free()
 
 func pop():
-	self.queue_free()
+	print("EnemyB pop")
+	#self.queue_free()
 
 func _on_HitBox_body_entered(body):
-	damange()
-	body.pop()
-	pass # Replace with function body.
+	if(body.get_collision_layer_bit(0)):
+		damange()
+		body.pop()

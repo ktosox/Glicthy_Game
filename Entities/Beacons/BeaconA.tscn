@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/Beacons/BeaconA.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Artwork/Shapes/Octagon_Full.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Artwork/Shapes/Circle_Full.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24.4993, 25.6535 )
+extents = Vector2( 30, 30 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 11.0477
@@ -16,16 +18,6 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( 0.044106, 0.100015 )
-scale = Vector2( 1.43917, 1.34377 )
-color = Color( 0.396078, 0.396078, 0.396078, 1 )
-polygon = PoolVector2Array( -17.9136, -10.785, -14.681, 7.22507, -11.3165, 13.6242, 5.24219, 17.9783, 15.1378, 11.5791, 15.2038, -9.00375, 0.558262, -18.2397 )
-
-[node name="Polygon2D2" type="Polygon2D" parent="."]
-color = Color( 0.321569, 0.839216, 1, 1 )
-polygon = PoolVector2Array( -7.55615, -8.41001, -9.79915, -0.625458, -8.14989, 6.16953, -2.21251, 8.47851, 6.16578, 8.54449, 8.87058, 2.07935, 8.67267, -5.44133, 2.2735, -9.66346 )
-
 [node name="DetectionRange" type="Area2D" parent="."]
 collision_layer = 128
 
@@ -33,5 +25,17 @@ collision_layer = 128
 shape = SubResource( 2 )
 
 [node name="TimerDying" type="Timer" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+self_modulate = Color( 0.501961, 0.0392157, 0.0392157, 1 )
+polygon = PoolVector2Array( -30, -30, -30, -10, -20, 0, -30, 10, -30, 30, -10, 30, 0, 20, 10, 30, 30, 30, 30, 10, 20, 0, 30, -10, 30, -30, 10, -30, 0, -20, -10, -30 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+self_modulate = Color( 0.298039, 0.0980392, 0.745098, 1 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_DetectionRange_body_entered"]
 [connection signal="timeout" from="TimerDying" to="." method="_on_TimerDying_timeout"]

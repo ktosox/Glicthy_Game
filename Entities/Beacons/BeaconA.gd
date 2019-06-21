@@ -12,23 +12,23 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
 
 
 func damange():
 	print("oyuch")
 	HP -= 1
 	if (HP<0):
-		$TimerDying.start()
+		#$TimerDying.start()
 		if(GateNumber != 0):
 			GM.openGate(GateNumber)
 			GateNumber = 0
 
 
 func _on_DetectionRange_body_entered(body):
-	damange()
-	body.pop()
+	if(body.get_collision_layer_bit(0)):
+		damange()
+		body.pop()
 	pass # Replace with function body.
 
 

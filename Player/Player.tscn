@@ -6,7 +6,7 @@
 [ext_resource path="res://Player/PlayerGun.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30.0611, 29.8814 )
+extents = Vector2( 35.9013, 36.9678 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 27.961
@@ -14,6 +14,7 @@ radius = 27.961
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 236
+collision/safe_margin = 2.0
 script = ExtResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -30,12 +31,8 @@ editor_draw_drag_margin = true
 
 [node name="Overlay" parent="Camera2D" instance=ExtResource( 2 )]
 anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -515.0
-margin_top = -300.799
-margin_right = 514.0
-margin_bottom = 299.201
-rect_min_size = Vector2( 800, 600 )
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -1.1376, -1.1376 )

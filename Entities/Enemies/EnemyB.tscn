@@ -1,34 +1,159 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Entities/Enemies/EnemyB.gd" type="Script" id=1]
-[ext_resource path="res://Entities/Enemies/Enemy.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Explosions/ExplosionC.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Resources/Artwork/Shapes/Octagon_Full.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Artwork/Shapes/Moon1_Full.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Artwork/Shapes/Octagon.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Artwork/Shapes/Circle_Full.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Explosions/ExplosionC.tscn" type="PackedScene" id=6]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 29.8726, 29.9087 )
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 40.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 112.669
+radius = 190.263
+
+[sub_resource type="Animation" id=4]
+resource_name = "canon_extend"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/CanonLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -15, 0 ), Vector2( -30, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/CanonRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 15, 0 ), Vector2( 30, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer:current_animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "open_fire" ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "canon_hide"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/CanonRight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 30, 0 ), Vector2( 15, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/CanonLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -30, 0 ), Vector2( -15, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "startWalking"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "open_fire"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "canonFire"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "canon_hide" ]
+}
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 28.1929
+radius = 20.0
 
 [node name="EnemyB" type="RigidBody2D"]
 collision_layer = 8
 collision_mask = 142
+mass = 5.10204
 gravity_scale = 0.0
 contacts_reported = 5
 contact_monitor = true
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 7 )
 
 [node name="TimerMoving" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 2.2
 one_shot = true
 
 [node name="TimerStanding" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [node name="TimerDying" type="Timer" parent="."]
@@ -42,17 +167,61 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource( 2 )
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( 10, -40, -10, -40, -30, -20, -10, 0, -30, 20, -10, 40, 10, 40, 30, 20, 10, 0, 30, -20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/canon_extend = SubResource( 4 )
+anims/canon_hide = SubResource( 5 )
+anims/open_fire = SubResource( 6 )
+
 [node name="Sprite" type="Sprite" parent="."]
-self_modulate = Color( 0.286275, 0.215686, 0, 1 )
-scale = Vector2( 5, 5 )
+self_modulate = Color( 0.72549, 0.0352941, 0.0352941, 1 )
 texture = ExtResource( 2 )
-region_enabled = true
 region_rect = Rect2( 0, 0, 12, 12 )
 
-[node name="ExplosionC" parent="." instance=ExtResource( 3 )]
+[node name="CanonLeft" type="Sprite" parent="Sprite"]
+show_behind_parent = true
+position = Vector2( -15, 0 )
+texture = ExtResource( 3 )
+
+[node name="Octagon" type="Sprite" parent="Sprite/CanonLeft"]
+show_behind_parent = true
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/CanonLeft/Octagon"]
+self_modulate = Color( 0, 0.156863, 1, 1 )
+show_behind_parent = true
+position = Vector2( -8.33333, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="CanonRight" type="Sprite" parent="Sprite"]
+show_behind_parent = true
+position = Vector2( 15, 0 )
+rotation = 3.14159
+texture = ExtResource( 3 )
+
+[node name="Octagon" type="Sprite" parent="Sprite/CanonRight"]
+show_behind_parent = true
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/CanonRight/Octagon"]
+self_modulate = Color( 0, 0.156863, 1, 1 )
+show_behind_parent = true
+position = Vector2( -10, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 5 )
+
+[node name="ExplosionC" parent="." instance=ExtResource( 6 )]
 
 [node name="HitBox" type="Area2D" parent="."]
-editor/display_folded = true
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]

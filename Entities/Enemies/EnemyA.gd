@@ -59,8 +59,14 @@ func _physics_process(delta):
 func startDying():
 	$HitBox.queue_free()
 	$TimerDying.start()
-	$Polygon2D.modulate.a = 0.2
+	$Sprite2/Core.modulate = Color(1,0,1,1)
 	$ExplosionC.emitting = true
+
+
+func canonFire():
+	var newBullet = bulletAScene.instance()
+	newBullet.global_position = global_position + Vector2(((randi()%2)*40)-20,((randi()%2)*40)-20)
+	get_parent().add_child(newBullet)
 
 
 func damange():
@@ -70,7 +76,8 @@ func damange():
 
 
 func pop():
-	self.queue_free()
+	print("EnemyA Pop")
+	#self.queue_free()
 
 func _on_HitBox_body_entered(body):
 	damange()
