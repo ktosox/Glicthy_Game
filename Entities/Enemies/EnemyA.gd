@@ -80,9 +80,10 @@ func pop():
 	#self.queue_free()
 
 func _on_HitBox_body_entered(body):
-	damange()
-	body.pop()
-	pass # Replace with function body.
+	if(body.get_collision_layer_bit(0)):
+		damange()
+		body.pop()
+
 
 
 func _on_TimerDying_timeout():
