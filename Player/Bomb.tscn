@@ -23,26 +23,28 @@ tracks/0/keys = {
 }
 
 [node name="Bomb" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.513726 )
 rotation = 4.9461
 texture = ExtResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="Sprite"]
-position = Vector2( 0, -30 )
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 0, -25 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spin2win"
 anims/spin2win = SubResource( 2 )
 
 [node name="TimerFire" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.2
 autostart = true
 
 [node name="TimerDying" type="Timer" parent="."]

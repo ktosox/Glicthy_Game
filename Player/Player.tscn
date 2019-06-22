@@ -60,7 +60,6 @@ drag_margin_bottom = 1.0
 editor_draw_drag_margin = true
 
 [node name="Overlay" parent="Camera2D" instance=ExtResource( 2 )]
-visible = false
 anchor_right = 0.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -74,8 +73,8 @@ shape = SubResource( 1 )
 wait_time = 5.0
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 16
+collision_layer = 0
+collision_mask = 80
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource( 2 )
@@ -88,6 +87,11 @@ anims/damangeFlash = SubResource( 3 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 texture = ExtResource( 4 )
+
+[node name="TimerBombCooldown" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 [connection signal="timeout" from="TimerPhaseCooldown" to="." method="_on_TimerPhaseCooldown_timeout"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="timeout" from="TimerBulletCooldown" to="." method="_on_TimerBulletCooldown_timeout"]
+[connection signal="timeout" from="TimerBombCooldown" to="." method="_on_TimerBombCooldown_timeout"]

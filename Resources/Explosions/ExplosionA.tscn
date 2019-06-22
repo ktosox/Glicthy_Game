@@ -18,6 +18,7 @@ emitting = false
 amount = 42
 lifetime = 1.73
 one_shot = true
+preprocess = 1.0
 speed_scale = 1.92
 explosiveness = 0.93
 randomness = 0.52

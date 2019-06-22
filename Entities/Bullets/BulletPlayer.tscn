@@ -4,17 +4,17 @@
 [ext_resource path="res://Resources/Particles/effect5.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 6.0
+radius = 8.0
 
 [sub_resource type="Curve" id=2]
-_data = [ Vector2( 0, 0.762292 ), 0.0, 0.196848, 0, 0, Vector2( 0.854703, 0.0118438 ), -2.47924, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.2272 ), 0.0, 0.196848, 0, 0, Vector2( 0.566137, 0.6848 ), 0.702937, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.569536 )
+offsets = PoolRealArray( 0, 0.984127 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="BulletPlayer" type="RigidBody2D"]
-collision_mask = 4
+collision_mask = 0
 gravity_scale = 0.0
 contacts_reported = 10
 contact_monitor = true
@@ -29,7 +29,7 @@ autostart = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 rotation = 1.5708
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.6, 0.6 )
 amount = 4
 lifetime = 1.55
 preprocess = 2.0
@@ -42,6 +42,7 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 0.0
 angle = 180.0
 angle_random = 1.0
+scale_amount_random = 0.46
 scale_amount_curve = SubResource( 2 )
 color_ramp = SubResource( 3 )
 [connection signal="timeout" from="TimerDeath" to="." method="_on_TimerDeath_timeout"]

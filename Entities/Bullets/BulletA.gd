@@ -13,7 +13,7 @@ func _on_LifeTimer_timeout():
 func dying():
 	if(alive):
 		$placeholder.visible = false
-		$ExplosionA.emitting = true
+		$CollisionShape2D.queue_free()
 		$DeathTimer.start()
 	alive = false
 

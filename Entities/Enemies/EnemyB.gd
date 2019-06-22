@@ -2,7 +2,7 @@ extends RigidBody2D
 
 var HP = 3
 
-const MOTION_SPEED = 8000
+const MOTION_SPEED = 10000
 
 var direction = Vector2()
 

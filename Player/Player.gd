@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var bulletPlayerScene = load("res://Entities/Bullets/BulletPlayer.tscn")
 
-var bombPlayerScene = load("")
+var bombPlayerScene = load("res://Player/Bomb.tscn")
 
 var bulletReady = true
 
@@ -24,11 +24,11 @@ func _input(event):
 			fire_bullet()
 	if event.is_action_pressed("ui_cancel"):
 		GM.pause_game()
-	if event.is_action_pressed("skill_phase"):
-		if(phaseReady):
-			skillPhase()
-		else:
-			pass
+#	if event.is_action_pressed("skill_phase"):
+#		if(phaseReady):
+#			skillPhase()
+#		else:
+#			pass
 	if event.is_action_pressed("skill_bomb"):
 		if(bombReady):
 			skillBomb()
@@ -75,15 +75,16 @@ func skillPhase():
 	phaseReady = false
 	$TimerPhaseCooldown.start()
 	$Camera2D/Overlay.skillPhaseUsed()
-	$Sprite.modulate.a = 0.4
 	pass
 
 
 func skillBomb():
 	var newBomb = bombPlayerScene.instance()
 	newBomb.global_position = global_position
-	newBomb.global_rotation = global_rotation
+	newBomb.global_rotation = $PlayerGun.global_rotation
 	get_parent().add_child(newBomb)
+	bombReady = false
+	$TimerBombCooldown.start()
 	#seperate scene that fires a spray of bullets
 	#an update to overlay that visualises skill cooldown goes here
 	pass
@@ -114,7 +115,6 @@ func _on_TimerPhaseCooldown_timeout():
 	#code for exploding enemies player is standing in on materialisation goes here
 	#make a thibk bullet scene, make it appear here
 	phaseReady = true
-	$Sprite.modulate.a = 1.0
 
 func damange():
 	GM.playerHP -=1
@@ -123,7 +123,7 @@ func damange():
 	updateHP(GM.playerHP)
 
 func _on_HitBox_body_entered(body):
-	if(body.get_collision_layer_bit(0) or body.get_collision_layer_bit(6)):
+	if(body.get_collision_layer_bit(4) or body.get_collision_layer_bit(6)):
 		if(!invunrability):
 			damange()
 			body.pop()
@@ -142,3 +142,8 @@ func _on_TimerBulletCooldown_timeout():
 	bulletReady = true
 	if(Input.is_mouse_button_pressed(1)):
 		fire_bullet()
+
+
+func _on_TimerBombCooldown_timeout():
+	bombReady = true
+	pass # Replace with function body.

@@ -11,7 +11,7 @@
 radius = 40.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 190.263
+radius = 440.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "canon_extend"
@@ -104,9 +104,33 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.9, 1, 1.2, 1.3, 1.4, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "setTarget"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "scanForPlayer"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
 "args": [  ],
 "method": "canonFire"
 }, {
@@ -149,11 +173,10 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="TimerMoving" type="Timer" parent="."]
-wait_time = 2.2
 one_shot = true
 
 [node name="TimerStanding" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 1.4
 one_shot = true
 
 [node name="TimerDying" type="Timer" parent="."]

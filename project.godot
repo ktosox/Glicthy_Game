@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Glitched_Level"
-run/main_scene="res://Levels/ExampleLevel.tscn"
+run/main_scene="res://Levels/FirstLevel.tscn"
 config/icon="res://icon.png"
 
 [autoload]

@@ -19,13 +19,10 @@ func _ready():
 #	pass
 
 func scanForPlayer():
-	if($DetectionRange.get_overlapping_bodies() != []):
-		setTarget()
-		$Head.rotation = atan2( -GM.playerCurrent.global_position.x + global_position.x, GM.playerCurrent.global_position.y  -global_position.y) 
+	if($DetectionRange.get_overlapping_bodies().find(GM.playerCurrent)!=-1):
 		$AnimationPlayer.play("fireTurret")
 	else:
 		$TimerCheckForPlayer.start()
-	pass
 
 func _on_TimerCheckForPlayer_timeout():
 	scanForPlayer()
@@ -43,8 +40,11 @@ func pop():
 
 
 func setTarget():
-	target = GM.playerCurrent.global_position - global_position
-	target=Vector2( clamp(target.x, -GM.BS*10,GM.BS*10),clamp(target.y, -GM.BS*10,GM.BS*10))
+	$Head.rotation = atan2( -GM.playerCurrent.global_position.x + global_position.x, GM.playerCurrent.global_position.y  -global_position.y)
+	print("Head rotation: ",$Head.rotation) 
+	target.x = -sin(atan2(global_position.x - GM.playerCurrent.global_position.x, global_position.y - GM.playerCurrent.global_position.y)) *10*GM.BS
+	target.y = -cos(atan2(global_position.x - GM.playerCurrent.global_position.x, global_position.y - GM.playerCurrent.global_position.y)) *10*GM.BS
+	print("target: ", target)
 
 func damange():
 	HP -= 1
@@ -52,10 +52,14 @@ func damange():
 		startDying()
 
 func startDying():
+	if(GateNumber!=0):
+		GM.openGate(GateNumber)
+		GateNumber = 0
+	$AnimationPlayer.stop()
 	$HitBox.queue_free()
 	$CollisionShape2D.queue_free()
 	$TimerDying.start()
-	$Head.modulate.a = 0.2
+	$Head.modulate.a = 0
 
 func _on_TimerDying_timeout():
 	queue_free()
@@ -66,3 +70,5 @@ func _on_HitBox_body_entered(body):
 	if(body.get_collision_layer_bit(0)):
 		damange()
 		body.pop()
+
+

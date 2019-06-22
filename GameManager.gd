@@ -6,7 +6,7 @@ var playerHP = 3
 var playerCurrent 
 
 
-var BS = 5
+var BS = 7.6
 
 var enemyCount
 var enemyCountMax = 50
