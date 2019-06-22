@@ -1,11 +1,13 @@
 extends RigidBody2D
 
-var lifeTime = 8
+var lifeTime = 16
+var speed = 350
 
 var bulletPlayerScene = load("res://Entities/Bullets/BulletPlayer.tscn")
 
 
 func _ready():
+	linear_velocity = Vector2(sin(self.rotation),-cos(self.rotation)) * speed
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

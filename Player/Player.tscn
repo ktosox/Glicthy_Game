@@ -1,15 +1,45 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Overlay.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/Player.png" type="Texture" id=3]
-[ext_resource path="res://Player/PlayerGun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/PlayerGun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Resources/Artwork/Shapes/Trianlge_Full.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28.9651, 29.0111 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 27.961
+
+[sub_resource type="Animation" id=3]
+resource_name = "damangeFlash"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.156863 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.156863 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.156863 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "invunrableStop"
+} ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -30,23 +60,15 @@ drag_margin_bottom = 1.0
 editor_draw_drag_margin = true
 
 [node name="Overlay" parent="Camera2D" instance=ExtResource( 2 )]
+visible = false
 anchor_right = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -1.1376, -1.1376 )
-scale = Vector2( 5, 5 )
-z_as_relative = false
-texture = ExtResource( 3 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 12, 12 )
-region_filter_clip = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="PlayerGun" parent="." instance=ExtResource( 4 )]
+[node name="PlayerGun" parent="." instance=ExtResource( 3 )]
 
 [node name="TimerPhaseCooldown" type="Timer" parent="."]
 wait_time = 5.0
@@ -60,6 +82,12 @@ shape = SubResource( 2 )
 
 [node name="TimerBulletCooldown" type="Timer" parent="."]
 wait_time = 0.4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/damangeFlash = SubResource( 3 )
+
+[node name="PlayerSprite" type="Sprite" parent="."]
+texture = ExtResource( 4 )
 [connection signal="timeout" from="TimerPhaseCooldown" to="." method="_on_TimerPhaseCooldown_timeout"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="timeout" from="TimerBulletCooldown" to="." method="_on_TimerBulletCooldown_timeout"]

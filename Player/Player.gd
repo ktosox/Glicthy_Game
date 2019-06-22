@@ -12,11 +12,7 @@ var bombReady = true
 
 var invunrability = false
 
-var HP = 3
-
-const MOTION_SPEED = 10 
-
-
+const MOTION_SPEED = 12
 
 
 var glitchOffset = Vector2()
@@ -86,6 +82,8 @@ func skillPhase():
 func skillBomb():
 	var newBomb = bombPlayerScene.instance()
 	newBomb.global_position = global_position
+	newBomb.global_rotation = global_rotation
+	get_parent().add_child(newBomb)
 	#seperate scene that fires a spray of bullets
 	#an update to overlay that visualises skill cooldown goes here
 	pass
@@ -102,12 +100,9 @@ func fire_bullet():
 	get_parent().add_child(newBullet)
 
 func invunrableStart():
-
-	
 	invunrability = true
 
 func invunrableStop():
-	
 	invunrability = false
 
 func _on_TimerPhaseCooldown_timeout():
@@ -122,10 +117,10 @@ func _on_TimerPhaseCooldown_timeout():
 	$Sprite.modulate.a = 1.0
 
 func damange():
-	GM.HP -=1
-	#play invurability effect
+	GM.playerHP -=1
+	$AnimationPlayer.play("damangeFlash")
 	invunrableStart()
-	updateHP()
+	updateHP(GM.playerHP)
 
 func _on_HitBox_body_entered(body):
 	if(body.get_collision_layer_bit(0) or body.get_collision_layer_bit(6)):
@@ -137,13 +132,11 @@ func _on_HitBox_body_entered(body):
 func pop():
 	print("something tired to pop the player like a bullet - this shouldnt happen :(")
 
-func updateHP():
-	#update the value in overlay
-	pass
+func updateHP(newHP):
+	$Camera2D/Overlay.updatePlayerHP(newHP)
 	
-func updateBossHP():
-	#update the value in overlay
-	pass
+func updateBossHP(newBossHP):
+	$Camera2D/Overlay.updateBossHP(newBossHP)
 
 func _on_TimerBulletCooldown_timeout():
 	bulletReady = true

@@ -37,3 +37,10 @@ func skillPhaseUsed():
 
 func skillPhaseReady():
 	pass
+	
+func skillBombUsed():
+	pass
+	
+func skillBombReady():
+	pass
+

@@ -29,6 +29,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+rotation = 4.9461
 texture = ExtResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="Sprite"]
@@ -41,11 +42,10 @@ autoplay = "spin2win"
 anims/spin2win = SubResource( 2 )
 
 [node name="TimerFire" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.3
 autostart = true
 
 [node name="TimerDying" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 [connection signal="timeout" from="TimerFire" to="." method="_on_TimerFire_timeout"]
 [connection signal="timeout" from="TimerDying" to="." method="_on_TimerDying_timeout"]

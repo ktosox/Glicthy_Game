@@ -132,7 +132,7 @@ anchor_bottom = 1.0
 margin_bottom = 60.0
 
 [node name="SkillPhase" type="Panel" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer"]
-self_modulate = Color( 1, 0, 0, 0 )
+self_modulate = Color( 0.9375, 0, 0, 0.9375 )
 margin_left = 4.0
 margin_top = 5.0
 margin_right = 54.0

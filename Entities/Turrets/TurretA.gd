@@ -1,9 +1,7 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 export var GateNumber = 0
+
 
 var target = Vector2()
 
