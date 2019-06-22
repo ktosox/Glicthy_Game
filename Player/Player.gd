@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 var bulletPlayerScene = load("res://Entities/Bullets/BulletPlayer.tscn")
 
+var bombPlayerScene = load("")
+
 var bulletReady = true
 
 var phaseReady = true
@@ -32,7 +34,7 @@ func _input(event):
 		else:
 			pass
 	if event.is_action_pressed("skill_bomb"):
-		if(phaseReady):
+		if(bombReady):
 			skillBomb()
 		else:
 			pass
@@ -82,7 +84,10 @@ func skillPhase():
 
 
 func skillBomb():
+	var newBomb = bombPlayerScene.instance()
+	newBomb.global_position = global_position
 	#seperate scene that fires a spray of bullets
+	#an update to overlay that visualises skill cooldown goes here
 	pass
 	
 
@@ -96,6 +101,15 @@ func fire_bullet():
 	newBullet.global_position.y -= cos($PlayerGun.global_rotation) *70
 	get_parent().add_child(newBullet)
 
+func invunrableStart():
+
+	
+	invunrability = true
+
+func invunrableStop():
+	
+	invunrability = false
+
 func _on_TimerPhaseCooldown_timeout():
 	set_collision_layer_bit(1,true)
 	set_collision_mask_bit(3,true)
@@ -108,9 +122,9 @@ func _on_TimerPhaseCooldown_timeout():
 	$Sprite.modulate.a = 1.0
 
 func damange():
-	HP -= 1
+	GM.HP -=1
 	#play invurability effect
-	invunrability = true
+	invunrableStart()
 	updateHP()
 
 func _on_HitBox_body_entered(body):
@@ -124,6 +138,11 @@ func pop():
 	print("something tired to pop the player like a bullet - this shouldnt happen :(")
 
 func updateHP():
+	#update the value in overlay
+	pass
+	
+func updateBossHP():
+	#update the value in overlay
 	pass
 
 func _on_TimerBulletCooldown_timeout():
