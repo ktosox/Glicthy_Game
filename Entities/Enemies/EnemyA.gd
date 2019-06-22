@@ -3,7 +3,7 @@ extends RigidBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var HP = 1
+var HP = 2
 
 const MOTION_SPEED = 5000
 
@@ -14,7 +14,6 @@ var moving = false
 var bulletAScene = load("res://Entities/Bullets/BulletA.tscn")
 
 var enemyMode = 0 # 0 for passive / 1 for active
-var target = Vector2()
 
 
 func _ready():
@@ -59,7 +58,7 @@ func _physics_process(delta):
 func startDying():
 	$HitBox.queue_free()
 	$TimerDying.start()
-	$Sprite2/Core.modulate = Color(1,0,1,1)
+	$Sprite2.visible = false
 	$ExplosionC.emitting = true
 
 
@@ -80,9 +79,9 @@ func pop():
 	#self.queue_free()
 
 func _on_HitBox_body_entered(body):
-	damange()
-	body.pop()
-	pass # Replace with function body.
+	if(body.get_collision_layer_bit(0)):
+		damange()
+		body.pop()
 
 
 func _on_TimerDying_timeout():
