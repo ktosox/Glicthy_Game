@@ -19,37 +19,36 @@ var target
 
 
 func _ready():
-	startWalking()
+	wahtNow()
 	pass
+
+func wahtNow():
+	scanForPlayer()
+	match(randi()%3):
+		0:
+			startWalking()
+		1:
+			$AnimationPlayer.play("rotate")
+		2:
+			if(enemyMode == 1):
+				$AnimationPlayer.play("open_fire")
+			else:
+				$TimerSleep.start()
 
 
 func startWalking():
-	#print(GM.playerCurrent)
-	#print($DetectionRange.get_overlapping_bodies())
-	
 	if(enemyMode == 0):
-		scanForPlayer()
 		direction = Vector2(((randi()%2)*2)-1,((randi()%2)*2)-1) #pick a direction
-	elif(enemyMode == 1):
+	else:
 		direction = GM.playerCurrent.global_position-self.global_position
-		target = GM.playerCurrent.global_position - global_position
+		setTarget()
 		#direction = Vector2(,) #pick a direction
 	moving = true
-	$TimerMoving.start()
-
-func stopWalking():
-	moving = false
-	linear_velocity = Vector2(0,0)
-	if (enemyMode == 1):
-		var newBullet = bulletAScene.instance()
-		newBullet.global_position = self.global_position
-		get_parent().add_child(newBullet)
-	$TimerStanding.start()
 
 func scanForPlayer():
 	if($DetectionRange.get_overlapping_bodies() != []):
 		enemyMode = 1
-		target = GM.playerCurrent.global_position - global_position
+		setTarget()
 	else:
 		enemyMode = 0
 	pass
@@ -70,7 +69,6 @@ func canonFire():
 	newBullet.global_position = global_position + Vector2(((randi()%2)*40)-20,((randi()%2)*40)-20)
 	newBullet.linear_velocity= target * GM.BS
 	get_parent().add_child(newBullet)
-
 
 func damange():
 	HP -= 1
@@ -93,14 +91,6 @@ func setTarget():
 
 func _on_TimerDying_timeout():
 	queue_free()
-	pass # Replace with function body.
 
-
-func _on_TimerStanding_timeout():
-	startWalking()
-	pass # Replace with function body.
-
-
-func _on_TimerMoving_timeout():
-	stopWalking()
-	pass # Replace with function body.
+func _on_TimerSleep_timeout():
+	wahtNow()
