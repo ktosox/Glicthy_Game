@@ -14,7 +14,7 @@ radius = 50.0
 [sub_resource type="CircleShape2D" id=3]
 radius = 352.0
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "cooldown"
 length = 2.0
 tracks/0/type = "value"
@@ -44,8 +44,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "fireTurret"
+[sub_resource type="Animation" id=5]
 length = 2.1
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -112,7 +111,7 @@ tracks/2/keys = {
 
 [node name="TurretA" type="StaticBody2D"]
 position = Vector2( 576, 368 )
-collision_layer = 4
+collision_layer = 128
 collision_mask = 106
 script = ExtResource( 1 )
 
@@ -147,7 +146,6 @@ texture = ExtResource( 3 )
 modulate = Color( 0, 0.301961, 0.278431, 1 )
 show_behind_parent = true
 position = Vector2( 0, 9.30714 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 4 )
 
 [node name="Line2D" type="Line2D" parent="Head"]
@@ -167,8 +165,8 @@ collision_mask = 2
 shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/cooldown = SubResource( 5 )
-anims/fireTurret = SubResource( 4 )
+anims/cooldown = SubResource( 4 )
+anims/fireTurret = SubResource( 5 )
 
 [node name="TimerDying" type="Timer" parent="."]
 [connection signal="timeout" from="TimerCheckForPlayer" to="." method="_on_TimerCheckForPlayer_timeout"]
