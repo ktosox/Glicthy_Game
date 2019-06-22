@@ -84,6 +84,7 @@ func _on_HitBox_body_entered(body):
 		body.pop()
 
 
+
 func _on_TimerDying_timeout():
 	queue_free()
 	pass # Replace with function body.

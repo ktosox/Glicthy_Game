@@ -2,9 +2,15 @@ extends KinematicBody2D
 
 var bulletPlayerScene = load("res://Entities/Bullets/BulletPlayer.tscn")
 
+var bulletReady = true
+
 var phaseReady = true
 
+var bombReady = true
 
+var invunrability = false
+
+var HP = 3
 
 const MOTION_SPEED = 10 
 
@@ -16,14 +22,20 @@ var glitchState = 1
 
 func _input(event):
 	if(event.is_class("InputEventMouseButton")):
-		if(event.button_index == 1 && event.is_pressed()):
+		if(event.button_index == 1 && event.is_pressed() && bulletReady):
 			fire_bullet()
 	if event.is_action_pressed("ui_cancel"):
 		GM.pause_game()
-	if event.is_action_pressed("ui_home"):
+	if event.is_action_pressed("skill_phase"):
 		if(phaseReady):
 			skillPhase()
-		pass
+		else:
+			pass
+	if event.is_action_pressed("skill_bomb"):
+		if(phaseReady):
+			skillBomb()
+		else:
+			pass
 
 func _ready():
 	GM.playerCurrent = self
@@ -66,14 +78,21 @@ func skillPhase():
 	$Sprite.modulate.a = 0.4
 	pass
 
+
+func skillBomb():
+	#seperate scene that fires a spray of bullets
+	pass
+	
+
 func fire_bullet():
+	bulletReady = false
+	$TimerBulletCooldown.start()
 	var newBullet = bulletPlayerScene.instance()
 	newBullet.global_rotation = $PlayerGun.global_rotation
 	newBullet.global_position = self.global_position
 	newBullet.global_position.x += sin($PlayerGun.global_rotation) *70
 	newBullet.global_position.y -= cos($PlayerGun.global_rotation) *70
 	get_parent().add_child(newBullet)
-	pass
 
 func _on_TimerPhaseCooldown_timeout():
 	set_collision_layer_bit(1,true)
@@ -82,13 +101,28 @@ func _on_TimerPhaseCooldown_timeout():
 	set_collision_mask_bit(5,true)
 	set_collision_mask_bit(6,true)
 	#code for exploding enemies player is standing in on materialisation goes here
+	#make a thibk bullet scene, make it appear here
 	phaseReady = true
 	$Sprite.modulate.a = 1.0
 
+func damange():
+	HP -= 1
+	#play invurability effect
+	invunrability = true
+	updateHP()
+
 func _on_HitBox_body_entered(body):
-	GM.playerHP -= 1
-	body.pop()
-	pass
+	if(body.get_collision_layer_bit(0) or body.get_collision_layer_bit(6)):
+		if(!invunrability):
+			damange()
+			body.pop()
+
 
 func pop():
 	print("something tired to pop the player like a bullet - this shouldnt happen :(")
+
+func updateHP():
+	pass
+
+func _on_TimerBulletCooldown_timeout():
+	bulletReady = true
