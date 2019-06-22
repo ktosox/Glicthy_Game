@@ -39,6 +39,8 @@ func _input(event):
 
 func _ready():
 	GM.playerCurrent = self
+	
+
 
 func _physics_process(delta):
 #	glitchOffset.x = glitchOffset.x + delta * glitchState *30
@@ -126,3 +128,5 @@ func updateHP():
 
 func _on_TimerBulletCooldown_timeout():
 	bulletReady = true
+	if(Input.is_mouse_button_pressed(1)):
+		fire_bullet()

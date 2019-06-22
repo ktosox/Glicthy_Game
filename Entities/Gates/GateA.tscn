@@ -16,22 +16,21 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="CollisionShape2D"]
 modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -1.90735e-006, 2.86102e-006 )
 z_index = 1
 texture = ExtResource( 2 )
 
 [node name="Line2D" type="Line2D" parent="CollisionShape2D/Sprite"]
 points = PoolVector2Array( 64, 64, 0, 0, -64, -64 )
-width = 2.0
+width = 4.0
 default_color = Color( 0.2, 0.2, 0.2, 1 )
-texture_mode = 200862160
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Line2D2" type="Line2D" parent="CollisionShape2D/Sprite"]
 points = PoolVector2Array( -64, 64, 0, 0, 64, -64 )
-width = 2.0
+width = 4.0
 default_color = Color( 0.2, 0.2, 0.2, 1 )
-texture_mode = 200862160
 begin_cap_mode = 2
 end_cap_mode = 2
 

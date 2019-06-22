@@ -6,7 +6,7 @@
 [ext_resource path="res://Player/PlayerGun.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 35.9013, 36.9678 )
+extents = Vector2( 28.9651, 29.0111 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 27.961
@@ -59,7 +59,7 @@ collision_mask = 16
 shape = SubResource( 2 )
 
 [node name="TimerBulletCooldown" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 0.3
 [connection signal="timeout" from="TimerPhaseCooldown" to="." method="_on_TimerPhaseCooldown_timeout"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="timeout" from="TimerBulletCooldown" to="." method="_on_TimerBulletCooldown_timeout"]

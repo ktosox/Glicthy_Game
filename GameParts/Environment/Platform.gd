@@ -12,7 +12,8 @@ func _ready():
 
 
 func _on_Platform_body_entered(body):
-	if(body.get_collision_bit(1) and GateNumber != 0):
+	if(body.get_collision_layer_bit(1) and GateNumber != 0):
+		print("player detect")
 		GM.openGate(GateNumber)
-		$Sprite.modulate.inverted()
+		$Sprite.modulate = $Sprite.modulate.inverted()
 		$CollisionShape2D.queue_free()

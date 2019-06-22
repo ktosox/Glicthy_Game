@@ -1,18 +1,90 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Turrets/TurretA.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Artwork/Shapes/Circle_Full.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Artwork/Shapes/Moon2_full.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Artwork/Shapes/Octagon_Full.png" type="Texture" id=4]
 
-[node name="TurretA" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64, 64 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 352.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "fireTurret"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "turnLeft"
+
+[sub_resource type="Animation" id=6]
+resource_name = "turnRight"
+
+[node name="TurretA" type="StaticBody2D"]
 script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
 [node name="TimerCheckForPlayer" type="Timer" parent="."]
 
-[node name="TimerTargeting" type="Timer" parent="."]
-
-[node name="TimerFiring" type="Timer" parent="."]
-
 [node name="TimerCooldown" type="Timer" parent="."]
+
+[node name="Base" type="Polygon2D" parent="."]
+color = Color( 0.329412, 0.329412, 0.329412, 1 )
+polygon = PoolVector2Array( -64, -64, -64, 64, 64, 64, 64, -64 )
+
+[node name="Sprite" type="Sprite" parent="Base"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 2 )
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource( 2 )
+
+[node name="Head" type="Sprite" parent="."]
+position = Vector2( 0, -13.03 )
+scale = Vector2( 1.4, 1.4 )
+texture = ExtResource( 3 )
+
+[node name="Octagon_Full" type="Sprite" parent="Head"]
+modulate = Color( 0, 0.301961, 0.278431, 1 )
+show_behind_parent = true
+position = Vector2( 0, 9.30714 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 4 )
+
+[node name="Line2D" type="Line2D" parent="Head"]
+show_behind_parent = true
+position = Vector2( 0, -3.99286 )
+points = PoolVector2Array( -11.4286, 47.5857, -11.4286, 11.4286, -11.4286, -11.4286, 11.4286, -11.4286, 11.4286, 11.4286, 11.4286, 47.5857 )
+width = 7.0
+default_color = Color( 0.427451, 0.427451, 0.427451, 1 )
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fireTurret = SubResource( 4 )
+anims/turnLeft = SubResource( 5 )
+anims/turnRight = SubResource( 6 )
 [connection signal="timeout" from="TimerCheckForPlayer" to="." method="_on_TimerCheckForPlayer_timeout"]
-[connection signal="timeout" from="TimerTargeting" to="." method="_on_TimerTargeting_timeout"]
-[connection signal="timeout" from="TimerFiring" to="." method="_on_TimerFiring_timeout"]
 [connection signal="timeout" from="TimerCooldown" to="." method="_on_TimerCooldown_timeout"]
