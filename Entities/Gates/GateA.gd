@@ -16,4 +16,5 @@ func _ready():
 
 
 func openGate():
-	self.queue_free()
+	$CollisionShape2D.queue_free()
+	$Polygon2D.modulate.a = 0.1

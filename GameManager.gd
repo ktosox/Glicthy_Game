@@ -56,5 +56,8 @@ func addGate(gateNumber, gateNode):
 		listAllGates[gateNumber] = gateNode
 
 func openGate(gateNumber):
-	listAllGates[gateNumber].openGate()
+	if(gateNumber !=0):
+		listAllGates[gateNumber].openGate()
+	else:
+		print("you cant open gate 0 silly")
 
