@@ -15,6 +15,8 @@ var bulletAScene = load("res://Entities/Bullets/BulletA.tscn")
 
 var enemyMode = 0 # 0 for passive / 1 for active
 
+var target
+
 
 func _ready():
 	startWalking()
@@ -30,7 +32,7 @@ func startWalking():
 		direction = Vector2(((randi()%2)*2)-1,((randi()%2)*2)-1) #pick a direction
 	elif(enemyMode == 1):
 		direction = GM.playerCurrent.global_position-self.global_position
-
+		target = GM.playerCurrent.global_position - global_position
 		#direction = Vector2(,) #pick a direction
 	moving = true
 	$TimerMoving.start()
@@ -47,6 +49,7 @@ func stopWalking():
 func scanForPlayer():
 	if($DetectionRange.get_overlapping_bodies() != []):
 		enemyMode = 1
+		target = GM.playerCurrent.global_position - global_position
 	else:
 		enemyMode = 0
 	pass
@@ -65,6 +68,7 @@ func startDying():
 func canonFire():
 	var newBullet = bulletAScene.instance()
 	newBullet.global_position = global_position + Vector2(((randi()%2)*40)-20,((randi()%2)*40)-20)
+	newBullet.linear_velocity= target * GM.BS
 	get_parent().add_child(newBullet)
 
 
@@ -83,7 +87,9 @@ func _on_HitBox_body_entered(body):
 		damange()
 		body.pop()
 
-
+func setTarget():
+	target = GM.playerCurrent.global_position - global_position
+	target=Vector2( clamp(target.x, -GM.BS*10,GM.BS*10),clamp(target.y, -GM.BS*10,GM.BS*10))
 
 func _on_TimerDying_timeout():
 	queue_free()

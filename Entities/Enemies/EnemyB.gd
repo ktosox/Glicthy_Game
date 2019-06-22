@@ -23,15 +23,12 @@ func _physics_process(delta):
 		linear_velocity = direction.normalized() * MOTION_SPEED * delta
 
 func startWalking():
-	#print(GM.playerCurrent)
-	#print($DetectionRange.get_overlapping_bodies())
-	
 	if(enemyMode == 0):
-		scanForPlayer()
 		direction = Vector2((randf()*2)-1,(randf()*2)-1) #pick a direction
+		scanForPlayer()
 	elif(enemyMode == 1):
 		direction = GM.playerCurrent.global_position-self.global_position
-
+		setTarget()
 		#direction = Vector2(,) #pick a direction
 	moving = true
 	$TimerMoving.start()
@@ -52,8 +49,8 @@ func startDying():
 
 func scanForPlayer():
 	if($DetectionRange.get_overlapping_bodies() != []):
-		print("player spotted")
 		enemyMode = 1
+		setTarget()
 	else:
 		enemyMode = 0
 	pass
@@ -66,11 +63,18 @@ func damange():
 func canonFire():
 	var newBullet = bulletAScene.instance()
 	newBullet.global_position = $Sprite/CanonLeft/Octagon/Sprite.global_position
+	newBullet.linear_velocity= target * GM.BS
 	get_parent().add_child(newBullet)
 	newBullet = bulletAScene.instance()
 	newBullet.global_position = $Sprite/CanonRight/Octagon/Sprite.global_position
+	newBullet.linear_velocity= target * GM.BS
 	get_parent().add_child(newBullet)
 
+
+func setTarget():
+	target = GM.playerCurrent.global_position - global_position
+	target=Vector2( clamp(target.x, -GM.BS*10,GM.BS*10),clamp(target.y, -GM.BS*10,GM.BS*10))
+		
 
 func canonStart():
 	$AnimationPlayer.play("canon_extend")

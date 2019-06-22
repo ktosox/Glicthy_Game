@@ -1,11 +1,11 @@
 extends RigidBody2D
 
-var speed = 360
+var speed = 40
 
 var alive = true
 
 func _ready():
-	self.linear_velocity = Vector2((randf()*2)-1,(randf()*2)-1) * speed
+	self.apply_impulse(Vector2(), Vector2((randf()*2)-1,(randf()*2)-1) * speed)
 
 func _on_LifeTimer_timeout():
 	dying()

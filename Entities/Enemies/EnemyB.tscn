@@ -108,7 +108,7 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
-"method": "canonFire"
+"method": "setTarget"
 }, {
 "args": [  ],
 "method": "canonFire"
