@@ -15,7 +15,7 @@ radius = 190.263
 
 [sub_resource type="Animation" id=3]
 resource_name = "canon_extend"
-length = 0.6
+length = 1.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite/CanonLeft:position")
 tracks/0/interp = 1
@@ -23,7 +23,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -15, 0 ), Vector2( -30, 0 ) ]
@@ -35,7 +35,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 15, 0 ), Vector2( 30, 0 ) ]
@@ -47,7 +47,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.5 ),
+"times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 2,
 "values": [ "open_fire" ]
@@ -104,21 +104,9 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.9, 1.2, 1.5, 1.6, 1.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "setTarget"
-}, {
-"args": [  ],
-"method": "canonFire"
-}, {
-"args": [  ],
-"method": "canonFire"
-}, {
-"args": [  ],
-"method": "canonFire"
-}, {
 "args": [  ],
 "method": "canonFire"
 }, {
