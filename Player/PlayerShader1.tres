@@ -28,5 +28,5 @@ void fragment() {
 
 [resource]
 shader = SubResource( 1 )
-shader_param/radius = 4.43457
-shader_param/modulate = Color( 0, 0, 0, 1 )
+shader_param/radius = -2.69447
+shader_param/modulate = Color( 0, 1, 0.0627451, 1 )

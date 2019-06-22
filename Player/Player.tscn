@@ -1,21 +1,23 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Overlay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/PlayerGun.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Resources/Artwork/Shapes/Trianlge_Full.png" type="Texture" id=4]
+[ext_resource path="res://Player/PlayerShader1.tres" type="Material" id=4]
+[ext_resource path="res://Resources/Artwork/Shapes/Octagon.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Artwork/Shapes/Octagon_Full.png" type="Texture" id=6]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 28.9651, 29.0111 )
+[sub_resource type="CircleShape2D" id=5]
+radius = 50.9902
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 27.961
+radius = 40.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "damangeFlash"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("PlayerSprite:self_modulate")
+tracks/0/path = NodePath("PlayerSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -41,6 +43,25 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "skillPhase"
+
+[sub_resource type="Animation" id=4]
+resource_name = "glow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Polygon2D/Sprite:material:shader_param/radius")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 2, 1, 0.5 ),
+"update": 0,
+"values": [ -3.0, 0.0, -3.0 ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 236
@@ -60,12 +81,13 @@ drag_margin_bottom = 1.0
 editor_draw_drag_margin = true
 
 [node name="Overlay" parent="Camera2D" instance=ExtResource( 2 )]
+visible = false
 anchor_right = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [node name="PlayerGun" parent="." instance=ExtResource( 3 )]
 
@@ -84,9 +106,53 @@ wait_time = 0.4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/damangeFlash = SubResource( 3 )
+anims/skillPhase = SubResource( 6 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
-texture = ExtResource( 4 )
+material = ExtResource( 4 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
+autoplay = "glow"
+anims/glow = SubResource( 4 )
+
+[node name="Polygon2D" type="Polygon2D" parent="PlayerSprite"]
+show_behind_parent = true
+polygon = PoolVector2Array( -10, -40, 10, -40, 20, -20, 40, -10, 40, 10, 20, 20, 10, 40, -10, 40, -20, 20, -40, 10, -40, -10, -20, -20 )
+
+[node name="Sprite" type="Sprite" parent="PlayerSprite/Polygon2D"]
+self_modulate = Color( 0, 0.490196, 0.0431373, 1 )
+show_behind_parent = true
+material = ExtResource( 4 )
+position = Vector2( 30, 0 )
+scale = Vector2( 0.8, 1 )
+texture = ExtResource( 6 )
+
+[node name="Sprite3" type="Sprite" parent="PlayerSprite/Polygon2D"]
+self_modulate = Color( 0, 0.490196, 0.0431373, 1 )
+show_behind_parent = true
+material = ExtResource( 4 )
+position = Vector2( 0, 30 )
+rotation = 1.5708
+scale = Vector2( 0.8, 1 )
+texture = ExtResource( 6 )
+
+[node name="Sprite4" type="Sprite" parent="PlayerSprite/Polygon2D"]
+self_modulate = Color( 0, 0.490196, 0.0431373, 1 )
+show_behind_parent = true
+material = ExtResource( 4 )
+position = Vector2( 0, -30 )
+rotation = 1.5708
+scale = Vector2( 0.8, 1 )
+texture = ExtResource( 6 )
+
+[node name="Sprite2" type="Sprite" parent="PlayerSprite/Polygon2D"]
+self_modulate = Color( 0, 0.490196, 0.0431373, 1 )
+show_behind_parent = true
+material = ExtResource( 4 )
+position = Vector2( -30, 0 )
+scale = Vector2( 0.8, 1 )
+texture = ExtResource( 6 )
 
 [node name="TimerBombCooldown" type="Timer" parent="."]
 wait_time = 3.0

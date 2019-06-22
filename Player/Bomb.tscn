@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Bomb.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Artwork/Shapes/Octagon_Full.png" type="Texture" id=2]
+[ext_resource path="res://Player/PlayerShader1.tres" type="Material" id=2]
+[ext_resource path="res://Resources/Particles/effect9.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0
@@ -33,8 +34,9 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.513726 )
-rotation = 4.9461
-texture = ExtResource( 2 )
+material = ExtResource( 2 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
 
 [node name="Position2D" type="Position2D" parent="Sprite"]
 position = Vector2( 0, -25 )

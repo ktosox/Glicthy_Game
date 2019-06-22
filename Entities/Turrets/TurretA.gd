@@ -41,10 +41,11 @@ func pop():
 
 func setTarget():
 	$Head.rotation = atan2( -GM.playerCurrent.global_position.x + global_position.x, GM.playerCurrent.global_position.y  -global_position.y)
-	print("Head rotation: ",$Head.rotation) 
+	$Head.rotation += deg2rad(180)
+	#print("Head rotation: ",$Head.rotation) 
 	target.x = -sin(atan2(global_position.x - GM.playerCurrent.global_position.x, global_position.y - GM.playerCurrent.global_position.y)) *10*GM.BS
 	target.y = -cos(atan2(global_position.x - GM.playerCurrent.global_position.x, global_position.y - GM.playerCurrent.global_position.y)) *10*GM.BS
-	print("target: ", target)
+	#print("target: ", target)
 
 func damange():
 	HP -= 1

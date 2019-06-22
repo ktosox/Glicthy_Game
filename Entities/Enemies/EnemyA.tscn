@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Enemies/EnemyA.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Explosions/ExplosionC.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Resources/Artwork/Shapes/Octagon_Full.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Artwork/Shapes/Moon1.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Artwork/Shapes/Circle_Full.png" type="Texture" id=5]
+[ext_resource path="res://Entities/Enemies/EnemyAShader.tres" type="Material" id=3]
+[ext_resource path="res://Resources/Artwork/Shapes/Octagon_Full.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Artwork/Shapes/Moon1.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Artwork/Shapes/Circle_Full.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 47.5191
@@ -12,7 +13,7 @@ radius = 47.5191
 [sub_resource type="CircleShape2D" id=2]
 radius = 24.2217
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "open_fire"
 length = 2.0
 loop = true
@@ -49,7 +50,7 @@ tracks/0/keys = {
 } ]
 }
 tracks/1/type = "method"
-tracks/1/path = NodePath("TimerSleep")
+tracks/1/path = NodePath("../EnemyA2/TimerSleep")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -62,8 +63,20 @@ tracks/1/keys = {
 "method": "start"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("../EnemyA2/Sprite2:material:shader_param/radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 10.0, -10.0, 10.0, -10.0, 10.0 ]
+}
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "rotate"
 length = 1.1
 tracks/0/type = "value"
@@ -114,40 +127,41 @@ shape = SubResource( 2 )
 [node name="TimerDying" type="Timer" parent="."]
 
 [node name="Sprite2" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+material = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="Sprite3" type="Sprite" parent="Sprite2"]
 position = Vector2( 0, 30 )
 rotation = 4.71239
 scale = Vector2( 1, 0.8 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="Sprite4" type="Sprite" parent="Sprite2"]
 position = Vector2( -30, 0 )
 scale = Vector2( 1, 0.8 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="Sprite5" type="Sprite" parent="Sprite2"]
 position = Vector2( 30, 0 )
 rotation = 3.14159
 scale = Vector2( 1, 0.8 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="Sprite6" type="Sprite" parent="Sprite2"]
 position = Vector2( 0, -30 )
 rotation = 1.5708
 scale = Vector2( 1, 0.8 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="Core" type="Sprite" parent="Sprite2"]
-self_modulate = Color( 0, 0.580392, 0.2, 1 )
+self_modulate = Color( 0.619608, 0, 0, 1 )
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "open_fire"
-anims/open_fire = SubResource( 4 )
-anims/rotate = SubResource( 5 )
+anims/open_fire = SubResource( 3 )
+anims/rotate = SubResource( 4 )
 
 [node name="TimerSleep" type="Timer" parent="."]
 wait_time = 2.0

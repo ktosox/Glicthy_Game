@@ -20,7 +20,7 @@ var firstLevelPath = "" # once added, first level path should go here
 
 var pauseMenuScene = load("res://GameParts/PauseMenu/PauseMenu.tscn")
 
-var ganeOverMenuScene = load("res://GameParts/GameOverMenu/GameOverMenu.tscn")
+var gameOverMenuScene = load("res://GameParts/GameOverMenu/GameOverMenu.tscn")
 
 func _ready():
 
@@ -42,7 +42,7 @@ func pause_game():
 	get_tree().paused = true
 
 func lose_game():
-	var newGameOverMenu = ganeOverMenuScene.instance()
+	var newGameOverMenu = gameOverMenuScene.instance()
 	playerCurrent.add_child(newGameOverMenu)
 	get_tree().paused = true
 
