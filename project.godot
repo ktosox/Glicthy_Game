@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Debug_Debacle"
+config/name="Glitched_Level"
 run/main_scene="res://Levels/FirstLevel.tscn"
 config/icon="res://icon.png"
 

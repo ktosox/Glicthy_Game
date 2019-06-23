@@ -144,7 +144,7 @@ func damange():
 	self.add_child(player)
 	player.stream = load("res://Resources/Sound/SFX/Player_Damage.wav")
 	player.set_bus("SFX")
-	player.set_volume_db(-6.0)
+	player.set_volume_db(4.0)
 	player.play()
 	updateHP(GM.playerHP)
 

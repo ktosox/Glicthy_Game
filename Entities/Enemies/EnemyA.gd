@@ -43,6 +43,7 @@ func _physics_process(delta):
 		linear_velocity = direction.normalized() * MOTION_SPEED * delta
 
 func startDying():
+	$AnimationPlayer.queue_free()
 	$HitBox.queue_free()
 	$TimerDying.start()
 	$Sprite2.visible = false
