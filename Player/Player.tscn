@@ -1,17 +1,19 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Overlay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/PlayerGun.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/PlayerShader1.tres" type="Material" id=4]
-[ext_resource path="res://Resources/Artwork/Shapes/Octagon.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Artwork/Shapes/Octagon_Full.png" type="Texture" id=6]
+[ext_resource path="res://Player/new_shadermaterial.tres" type="Material" id=4]
+[ext_resource path="res://Resources/Artwork/Shapes/Octagon_Full.png" type="Texture" id=5]
+[ext_resource path="res://Player/PlayerShader1.tres" type="Material" id=6]
+[ext_resource path="res://Resources/Artwork/Shapes/Octagon.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sound/Music/Phase_Ability.wav" type="AudioStream" id=8]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 50.9902
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 40.0
+radius = 50.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "damangeFlash"
@@ -35,7 +37,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 2 ),
+"times": PoolRealArray( 1.9 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -45,6 +47,59 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "skillPhase"
+length = 3.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2.4, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "invunrableStop"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PhaseSprite:material:shader_param/offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 2.9, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 5.65686, 0.34151, 2.82843 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -14, 0 ), Vector2( -10, 0 ), Vector2( -13, 0 ), Vector2( -7, 0 ), Vector2( -9, 0 ), Vector2( -2, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "glow"
@@ -64,7 +119,7 @@ tracks/0/keys = {
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
-collision_mask = 236
+collision_mask = 172
 collision/safe_margin = 2.0
 script = ExtResource( 1 )
 
@@ -91,7 +146,13 @@ shape = SubResource( 5 )
 [node name="PlayerGun" parent="." instance=ExtResource( 3 )]
 
 [node name="TimerPhaseCooldown" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 13.0
+one_shot = true
+
+[node name="PhaseSprite" type="Sprite" parent="."]
+material = ExtResource( 4 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 0
@@ -108,8 +169,9 @@ anims/damangeFlash = SubResource( 3 )
 anims/skillPhase = SubResource( 6 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
-material = ExtResource( 4 )
-texture = ExtResource( 5 )
+modulate = Color( 1, 1, 1, 0.313726 )
+material = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
 autoplay = "glow"
@@ -122,40 +184,43 @@ polygon = PoolVector2Array( -10, -40, 10, -40, 20, -20, 40, -10, 40, 10, 20, 20,
 [node name="Sprite" type="Sprite" parent="PlayerSprite/Polygon2D"]
 self_modulate = Color( 0, 0.490196, 0.0431373, 1 )
 show_behind_parent = true
-material = ExtResource( 4 )
+material = ExtResource( 6 )
 position = Vector2( 30, 0 )
 scale = Vector2( 0.8, 1 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="Sprite3" type="Sprite" parent="PlayerSprite/Polygon2D"]
 self_modulate = Color( 0, 0.490196, 0.0431373, 1 )
 show_behind_parent = true
-material = ExtResource( 4 )
+material = ExtResource( 6 )
 position = Vector2( 0, 30 )
 rotation = 1.5708
 scale = Vector2( 0.8, 1 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="Sprite4" type="Sprite" parent="PlayerSprite/Polygon2D"]
 self_modulate = Color( 0, 0.490196, 0.0431373, 1 )
 show_behind_parent = true
-material = ExtResource( 4 )
+material = ExtResource( 6 )
 position = Vector2( 0, -30 )
 rotation = 1.5708
 scale = Vector2( 0.8, 1 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="Sprite2" type="Sprite" parent="PlayerSprite/Polygon2D"]
 self_modulate = Color( 0, 0.490196, 0.0431373, 1 )
 show_behind_parent = true
-material = ExtResource( 4 )
+material = ExtResource( 6 )
 position = Vector2( -30, 0 )
 scale = Vector2( 0.8, 1 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="TimerBombCooldown" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 9.0
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 [connection signal="timeout" from="TimerPhaseCooldown" to="." method="_on_TimerPhaseCooldown_timeout"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="timeout" from="TimerBulletCooldown" to="." method="_on_TimerBulletCooldown_timeout"]

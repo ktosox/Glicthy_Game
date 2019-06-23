@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Overlay.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Artwork/Overlay/SciFi_Skill_p_26.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Artwork/Overlay/SciFi_Skill_p_03.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
 resource_name = "fadeIn"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -20,7 +20,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-length = 8.0
+length = 13.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
 tracks/0/interp = 1
@@ -28,10 +28,26 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 8 ),
+"times": PoolRealArray( 0, 13 ),
 "transitions": PoolRealArray( 2, -0.5 ),
 "update": 0,
 "values": [ Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "used"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.133333, 1, 1 ), Color( 0, 0.133333, 1, 0 ) ]
 }
 
 [node name="Overlay" type="Control"]
@@ -48,7 +64,7 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Curtain"]
 autoplay = "fadeIn"
-anims/fadeIn = SubResource( 1 )
+anims/fadeIn = SubResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -147,11 +163,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer"]
-margin_right = 2.0
 margin_bottom = 60.0
 
 [node name="SkillPhase" type="Panel" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer"]
-self_modulate = Color( 0.9375, 0, 0, 0.9375 )
+self_modulate = Color( 0, 0, 0, 0 )
 margin_left = 4.0
 margin_top = 5.0
 margin_right = 54.0
@@ -178,7 +193,7 @@ margin_bottom = 60.0
 size_flags_horizontal = 3
 
 [node name="Skill2" type="Panel" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer"]
-self_modulate = Color( 0, 0.133333, 1, 0.298039 )
+self_modulate = Color( 0, 0.133333, 1, 0 )
 margin_left = 64.0
 margin_top = 5.0
 margin_right = 114.0
@@ -186,6 +201,9 @@ margin_bottom = 55.0
 rect_min_size = Vector2( 50, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/Skill2"]
+anims/used = SubResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/Skill2"]
 show_behind_parent = true

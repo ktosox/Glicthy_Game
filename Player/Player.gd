@@ -24,11 +24,11 @@ func _input(event):
 			fire_bullet()
 	if event.is_action_pressed("ui_cancel"):
 		GM.pause_game()
-#	if event.is_action_pressed("skill_phase"):
-#		if(phaseReady):
-#			skillPhase()
-#		else:
-#			pass
+	if event.is_action_pressed("skill_phase"):
+		if(phaseReady):
+			skillPhase()
+		else:
+			pass
 	if event.is_action_pressed("skill_bomb"):
 		if(bombReady):
 			skillBomb()
@@ -66,16 +66,12 @@ func _physics_process(delta):
 
 
 func skillPhase():
-	print("PHASE!!!!!")
-	set_collision_layer_bit(1,false)
-	set_collision_mask_bit(3,false)
-	set_collision_mask_bit(4,false)
-	set_collision_mask_bit(5,false)
-	set_collision_mask_bit(6,false)
+
 	phaseReady = false
 	$TimerPhaseCooldown.start()
 	$Camera2D/Overlay.skillPhaseUsed()
-	pass
+	invunrableStart()
+	$AnimationPlayer.play("skillPhase")
 
 
 func skillBomb():
@@ -84,6 +80,7 @@ func skillBomb():
 	newBomb.global_rotation = $PlayerGun.global_rotation
 	get_parent().add_child(newBomb)
 	bombReady = false
+	$Camera2D/Overlay.skillBombUsed()
 	$TimerBombCooldown.start()
 	#seperate scene that fires a spray of bullets
 	#an update to overlay that visualises skill cooldown goes here
@@ -102,18 +99,21 @@ func fire_bullet():
 
 func invunrableStart():
 	invunrability = true
+	set_collision_layer_bit(1,false)
+	set_collision_mask_bit(3,false)
+	set_collision_mask_bit(4,false)
+	set_collision_mask_bit(5,false)
+	set_collision_mask_bit(6,false)
 
 func invunrableStop():
 	invunrability = false
-
-func _on_TimerPhaseCooldown_timeout():
 	set_collision_layer_bit(1,true)
 	set_collision_mask_bit(3,true)
 	set_collision_mask_bit(4,true)
 	set_collision_mask_bit(5,true)
 	set_collision_mask_bit(6,true)
-	#code for exploding enemies player is standing in on materialisation goes here
-	#make a thibk bullet scene, make it appear here
+
+func _on_TimerPhaseCooldown_timeout():
 	phaseReady = true
 
 func damange():
@@ -148,4 +148,3 @@ func _on_TimerBulletCooldown_timeout():
 
 func _on_TimerBombCooldown_timeout():
 	bombReady = true
-	pass # Replace with function body.

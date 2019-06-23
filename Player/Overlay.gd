@@ -37,8 +37,10 @@ func skillPhaseReady():
 	pass
 	
 func skillBombUsed():
+	$VBoxContainer/CenterContainer/Panel/HBoxContainer/Skill2/AnimationPlayer.play("used")
 	pass
 	
 func skillBombReady():
+	
 	pass
 
