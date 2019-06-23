@@ -81,7 +81,6 @@ drag_margin_bottom = 1.0
 editor_draw_drag_margin = true
 
 [node name="Overlay" parent="Camera2D" instance=ExtResource( 2 )]
-visible = false
 anchor_right = 0.0
 grow_horizontal = 2
 grow_vertical = 2

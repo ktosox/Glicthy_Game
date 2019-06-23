@@ -68,7 +68,7 @@ margin_left = 0.0
 margin_top = 76.0
 margin_right = 168.0
 margin_bottom = 136.0
-text = "MOAR"
+text = "MOAR BS"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer"]
 margin_top = 140.0

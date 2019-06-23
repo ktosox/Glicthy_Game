@@ -1,21 +1,23 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Entities/Enemies/EnemyB.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Artwork/Shapes/Octagon_Full.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Artwork/Shapes/Moon1_Full.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Artwork/Shapes/Octagon.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Artwork/Shapes/Circle_Full.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Explosions/ExplosionC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Enemies/EnemyAShader.tres" type="Material" id=2]
+[ext_resource path="res://Resources/Artwork/Shapes/Octagon_Full.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Artwork/Shapes/Moon1_Full.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Artwork/Shapes/Octagon.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Artwork/Shapes/Circle_Full.png" type="Texture" id=6]
+[ext_resource path="res://Entities/Enemies/EnemyBShader.tres" type="Material" id=7]
+[ext_resource path="res://Resources/Explosions/ExplosionC.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 40.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 440.0
+radius = 660.681
 
 [sub_resource type="Animation" id=3]
 resource_name = "canon_extend"
-length = 1.1
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite/CanonLeft:position")
 tracks/0/interp = 1
@@ -23,7 +25,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -15, 0 ), Vector2( -30, 0 ) ]
@@ -35,7 +37,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 15, 0 ), Vector2( 30, 0 ) ]
@@ -47,7 +49,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "update": 2,
 "values": [ "open_fire" ]
@@ -156,6 +158,18 @@ tracks/1/keys = {
 "update": 2,
 "values": [ "canon_hide" ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:material:shader_param/radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 10.0, 0.0, -10.0, 0.0 ]
+}
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 20.0
@@ -173,10 +187,11 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="TimerMoving" type="Timer" parent="."]
+wait_time = 0.7
 one_shot = true
 
 [node name="TimerStanding" type="Timer" parent="."]
-wait_time = 1.4
+wait_time = 0.6
 one_shot = true
 
 [node name="TimerDying" type="Timer" parent="."]
@@ -200,49 +215,51 @@ anims/open_fire = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 self_modulate = Color( 0.72549, 0.0352941, 0.0352941, 1 )
-texture = ExtResource( 2 )
+material = ExtResource( 2 )
+texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 12, 12 )
 
 [node name="CanonLeft" type="Sprite" parent="Sprite"]
 show_behind_parent = true
 position = Vector2( -15, 0 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="Octagon" type="Sprite" parent="Sprite/CanonLeft"]
 show_behind_parent = true
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Sprite/CanonLeft/Octagon"]
 self_modulate = Color( 0, 0.156863, 1, 1 )
 show_behind_parent = true
 position = Vector2( -8.33333, 0 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="CanonRight" type="Sprite" parent="Sprite"]
 show_behind_parent = true
 position = Vector2( 15, 0 )
 rotation = 3.14159
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="Octagon" type="Sprite" parent="Sprite/CanonRight"]
 show_behind_parent = true
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Sprite/CanonRight/Octagon"]
 self_modulate = Color( 0, 0.156863, 1, 1 )
 show_behind_parent = true
 position = Vector2( -10, 0 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Sprite"]
+material = ExtResource( 7 )
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
-[node name="ExplosionC" parent="." instance=ExtResource( 6 )]
+[node name="ExplosionC" parent="." instance=ExtResource( 8 )]
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 0

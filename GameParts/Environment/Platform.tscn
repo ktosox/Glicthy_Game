@@ -16,7 +16,7 @@ self_modulate = Color( 0.14902, 0.14902, 0.14902, 1 )
 polygon = PoolVector2Array( -96, -96, -96, 96, 96, 96, 96, -96 )
 
 [node name="Sprite" type="Sprite" parent="."]
-self_modulate = Color( 0.705882, 0, 0, 1 )
+modulate = Color( 1, 0, 0, 1 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 

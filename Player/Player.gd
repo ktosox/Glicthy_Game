@@ -118,6 +118,8 @@ func _on_TimerPhaseCooldown_timeout():
 
 func damange():
 	GM.playerHP -=1
+	if(GM.playerHP<1):
+		GM.lose_game()
 	$AnimationPlayer.play("damangeFlash")
 	invunrableStart()
 	updateHP(GM.playerHP)

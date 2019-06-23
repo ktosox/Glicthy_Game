@@ -8,6 +8,7 @@ func _on_Button_return_pressed():
 
 func _on_Button_moar_pressed():
 	print("MOAR MOAR MOARMOAR MOAR MOAR MOAR")
+	GM.BS += 1
 
 
 func _on_Button_exit_pressed():
