@@ -4,14 +4,13 @@
 [ext_resource path="res://GameParts/Environment/WhiteSpace.tres" type="TileSet" id=2]
 [ext_resource path="res://GameParts/Environment/Platform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Gates/GateA.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Enemies/EnemyA.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Entities/Turrets/TurretA.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Resources/Sound/Music/Glitch 1.ogg" type="AudioStream" id=8]
-[ext_resource path="res://Player/WIN ZONE.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemies/EnemyA.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Turrets/TurretA.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Resources/Sound/Music/Glitch 1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Player/WIN ZONE.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=9]
 
 [node name="Level" type="Node2D"]
-editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="TileMap2" type="TileMap" parent="."]
@@ -59,52 +58,51 @@ GateNumber = 4
 position = Vector2( 4800, 576 )
 GateNumber = 5
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 118, 64 )
-
-[node name="EnemyA2" parent="." instance=ExtResource( 6 )]
+[node name="EnemyA2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 256, 1536 )
 
-[node name="EnemyA6" parent="." instance=ExtResource( 6 )]
+[node name="EnemyA6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1634, 2100 )
 
-[node name="EnemyA7" parent="." instance=ExtResource( 6 )]
+[node name="EnemyA7" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1600, 896 )
 
-[node name="EnemyA9" parent="." instance=ExtResource( 6 )]
+[node name="EnemyA9" parent="." instance=ExtResource( 5 )]
 position = Vector2( 4096, 320 )
 
-[node name="EnemyA10" parent="." instance=ExtResource( 6 )]
+[node name="EnemyA10" parent="." instance=ExtResource( 5 )]
 position = Vector2( 4512, 1472 )
 
-[node name="EnemyA12" parent="." instance=ExtResource( 6 )]
+[node name="EnemyA12" parent="." instance=ExtResource( 5 )]
 position = Vector2( 3904, 2368 )
 
-[node name="EnemyA13" parent="." instance=ExtResource( 6 )]
+[node name="EnemyA13" parent="." instance=ExtResource( 5 )]
 position = Vector2( 3204, 1792 )
 
-[node name="EnemyA11" parent="." instance=ExtResource( 6 )]
+[node name="EnemyA11" parent="." instance=ExtResource( 5 )]
 position = Vector2( 4736, 1984 )
 
-[node name="EnemyA8" parent="." instance=ExtResource( 6 )]
+[node name="EnemyA8" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2304, 1920 )
 
-[node name="EnemyA4" parent="." instance=ExtResource( 6 )]
+[node name="EnemyA4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 512, 1984 )
 
-[node name="EnemyA5" parent="." instance=ExtResource( 6 )]
+[node name="EnemyA5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 128, 1024 )
 
-[node name="TurretA" parent="." instance=ExtResource( 7 )]
+[node name="TurretA" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2868.8, 64 )
 GateNumber = 4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 7 )
 volume_db = -6.0
 autoplay = true
 bus = "Music"
 
-[node name="WIN ZONE" parent="." instance=ExtResource( 9 )]
-position = Vector2( 3921.43, 2684.12 )
-scale = Vector2( 0.399995, 0.24 )
+[node name="WIN ZONE" parent="." instance=ExtResource( 8 )]
+position = Vector2( 3648, 2432 )
+
+[node name="Player" parent="." instance=ExtResource( 9 )]
+position = Vector2( 128, 128 )

@@ -174,4 +174,4 @@ stream = ExtResource( 13 )
 autoplay = true
 
 [node name="WIN ZONE" parent="." instance=ExtResource( 14 )]
-position = Vector2( 3464.21, 3593.74 )
+position = Vector2( 2593.39, 3586.72 )

@@ -12,6 +12,8 @@ var bombReady = true
 
 var invunrability = false
 
+var pauseReady = true
+
 const MOTION_SPEED = 10
 
 
@@ -23,7 +25,10 @@ func _input(event):
 		if(event.button_index == 1 && event.is_pressed() && bulletReady):
 			fire_bullet()
 	if event.is_action_pressed("ui_cancel"):
-		GM.pause_game()
+		if(pauseReady):
+			pauseReady = false
+			$TimerPauseCooldown.start()
+			GM.pause_game()
 	if event.is_action_pressed("skill_phase"):
 		if(phaseReady):
 			skillPhase()
@@ -144,7 +149,7 @@ func damange():
 	self.add_child(player)
 	player.stream = load("res://Resources/Sound/SFX/Player_Damage.wav")
 	player.set_bus("SFX")
-	player.set_volume_db(-6.0)
+	player.set_volume_db(4.0)
 	player.play()
 	updateHP(GM.playerHP)
 
@@ -172,3 +177,7 @@ func _on_TimerBulletCooldown_timeout():
 
 func _on_TimerBombCooldown_timeout():
 	bombReady = true
+
+
+func _on_TimerPauseCooldown_timeout():
+	pauseReady = true

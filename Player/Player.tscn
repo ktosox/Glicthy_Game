@@ -102,7 +102,6 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
-editor/display_folded = true
 collision_layer = 2
 collision_mask = 172
 collision/safe_margin = 2.0
@@ -207,7 +206,12 @@ texture = ExtResource( 5 )
 [node name="TimerBombCooldown" type="Timer" parent="."]
 wait_time = 9.0
 one_shot = true
+
+[node name="TimerPauseCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 [connection signal="timeout" from="TimerPhaseCooldown" to="." method="_on_TimerPhaseCooldown_timeout"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="timeout" from="TimerBulletCooldown" to="." method="_on_TimerBulletCooldown_timeout"]
 [connection signal="timeout" from="TimerBombCooldown" to="." method="_on_TimerBombCooldown_timeout"]
+[connection signal="timeout" from="TimerPauseCooldown" to="." method="_on_TimerPauseCooldown_timeout"]
