@@ -69,6 +69,13 @@ func canonFire():
 	newBullet.global_position = $Sprite/CanonRight/Octagon/Sprite.global_position
 	newBullet.linear_velocity= target * GM.BS
 	get_parent().add_child(newBullet)
+	var player = AudioStreamPlayer2D.new()
+	self.add_child(player)
+	player.stream = load("res://Resources/Sound/SFX/Enemy_Shoot.wav")
+	player.set_bus("SFX")
+	player.set_volume_db(-12.0)
+	player.set_pitch_scale(1.5)
+	player.play()
 
 
 func setTarget():

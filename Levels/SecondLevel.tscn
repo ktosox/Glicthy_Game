@@ -12,7 +12,7 @@
 [ext_resource path="res://Entities/Turrets/TurretA.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Entities/Enemies/EnemyA.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Entities/Enemies/EnemyB.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Resources/Sound/Music/Glicthy Game Theme.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Resources/Sound/Music/Glitch 2.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Player/WIN ZONE.tscn" type="PackedScene" id=14]
 
 [node name="Level" type="Node2D"]

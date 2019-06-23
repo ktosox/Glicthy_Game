@@ -18,6 +18,12 @@ func fireBullet():
 	newBullet.global_rotation = $Sprite.global_rotation
 	newBullet.global_position = $Sprite/Position2D.global_position
 	get_parent().add_child(newBullet)
+	var player = AudioStreamPlayer2D.new()
+	self.add_child(player)
+	player.stream = load("res://Resources/Sound/SFX/Player_Shoot.wav")
+	player.set_bus("SFX")
+	player.set_volume_db(-6.0)
+	player.play()
 
 func explode():
 	$TimerDying.start()

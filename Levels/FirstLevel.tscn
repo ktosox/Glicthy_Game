@@ -7,10 +7,11 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Enemies/EnemyA.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/Turrets/TurretA.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Resources/Sound/Music/Glitch_2.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Resources/Sound/Music/Glitch 1.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Player/WIN ZONE.tscn" type="PackedScene" id=9]
 
 [node name="Level" type="Node2D"]
+editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="TileMap2" type="TileMap" parent="."]
@@ -100,7 +101,10 @@ GateNumber = 4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -6.0
 autoplay = true
+bus = "Music"
 
 [node name="WIN ZONE" parent="." instance=ExtResource( 9 )]
-position = Vector2( 3648, 2176 )
+position = Vector2( 3921.43, 2684.12 )
+scale = Vector2( 0.399995, 0.24 )

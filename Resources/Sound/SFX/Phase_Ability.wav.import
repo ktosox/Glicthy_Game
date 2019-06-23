@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Phase_Ability.wav-60f55b987bc1a528b981505eb44adb6d.sample"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/Phase_Ability.wav"
+dest_files=[ "res://.import/Phase_Ability.wav-60f55b987bc1a528b981505eb44adb6d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -34,6 +34,13 @@ func fireBullet():
 	newBullet.global_position = $Head/Line2D.global_position
 	newBullet.linear_velocity= target * GM.BS
 	get_parent().add_child(newBullet)
+	var player = AudioStreamPlayer.new()
+	self.add_child(player)
+	player.stream = load("res://Resources/Sound/SFX/Enemy_Shoot.wav")
+	player.set_bus("SFX")
+	player.set_volume_db(-6.0)
+	player.set_pitch_scale(3.0)
+	player.play()
 
 func pop():
 	print("this should never hapen")
@@ -48,8 +55,8 @@ func setTarget():
 	#print("target: ", target)
 
 func damange():
-	HP -= 1
-	if(HP<1):
+	HP = HP - 1
+	if(HP <= 0):
 		startDying()
 
 func startDying():

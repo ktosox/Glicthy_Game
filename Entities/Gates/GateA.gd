@@ -18,3 +18,9 @@ func _ready():
 func openGate():
 	$CollisionShape2D.queue_free()
 	$Polygon2D.modulate.a = 0.1
+	var player = AudioStreamPlayer2D.new()
+	self.add_child(player)
+	player.stream = load("res://Resources/Sound/SFX/Gate_Open.wav")
+	player.set_bus("SFX")
+	player.set_volume_db(-6.0)
+	player.play()

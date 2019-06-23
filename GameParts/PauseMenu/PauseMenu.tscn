@@ -21,8 +21,8 @@ anchor_bottom = 1.0
 margin_left = -78.869
 margin_top = -81.869
 margin_right = 81.131
-margin_bottom = 58.131
-rect_min_size = Vector2( 1440, 860 )
+margin_bottom = 18.131
+rect_min_size = Vector2( 1440, 820 )
 color = Color( 0.313726, 0.313726, 0.313726, 0.790039 )
 __meta__ = {
 "_edit_lock_": true
@@ -45,9 +45,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 6.0
-margin_top = 4.0
+margin_top = 40.0
 margin_right = -6.0
-margin_bottom = -4.0
+margin_bottom = -40.0
 alignment = 1
 
 [node name="Button_return" parent="Panel/VBoxContainer" instance=ExtResource( 2 )]
@@ -57,31 +57,17 @@ margin_right = 168.0
 margin_bottom = 60.0
 text = "BACK"
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer"]
 margin_top = 64.0
 margin_right = 168.0
-margin_bottom = 72.0
-size_flags_vertical = 3
-
-[node name="Button_moar" parent="Panel/VBoxContainer" instance=ExtResource( 2 )]
-margin_left = 0.0
-margin_top = 76.0
-margin_right = 168.0
-margin_bottom = 136.0
-text = "MOAR BS"
-
-[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer"]
-margin_top = 140.0
-margin_right = 168.0
-margin_bottom = 148.0
+margin_bottom = 76.0
 size_flags_vertical = 3
 
 [node name="Button_exit" parent="Panel/VBoxContainer" instance=ExtResource( 2 )]
 margin_left = 0.0
-margin_top = 152.0
+margin_top = 80.0
 margin_right = 168.0
-margin_bottom = 212.0
+margin_bottom = 140.0
 text = "EXIT"
 [connection signal="pressed" from="Panel/VBoxContainer/Button_return" to="." method="_on_Button_return_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Button_moar" to="." method="_on_Button_moar_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button_exit" to="." method="_on_Button_exit_pressed"]

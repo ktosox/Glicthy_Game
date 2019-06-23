@@ -54,6 +54,12 @@ func canonFire():
 	newBullet.global_position = global_position #+ Vector2(((randi()%2)*40)-20,((randi()%2)*40)-20)
 	newBullet.linear_velocity= Vector2(((randi()%2)*2)-1,((randi()%2)*2)-1) *40* GM.BS
 	get_parent().add_child(newBullet)
+	var player = AudioStreamPlayer2D.new()
+	self.add_child(player)
+	player.stream = load("res://Resources/Sound/SFX/Enemy_Shoot.wav")
+	player.set_bus("SFX")
+	player.set_volume_db(-12.0)
+	player.play()
 
 func damange():
 	HP -= 1

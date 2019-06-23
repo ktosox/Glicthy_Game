@@ -6,6 +6,12 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var player = AudioStreamPlayer.new()
+	self.add_child(player)
+	player.stream = load("res://Resources/Sound/SFX/Player_Death.wav")
+	player.set_bus("SFX")
+	player.set_volume_db(-6.0)
+	player.play()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

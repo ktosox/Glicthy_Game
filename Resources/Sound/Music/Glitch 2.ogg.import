@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Glitch 2.ogg-6655bc26dff061e1204d395c7a208a04.oggstr"
+
+[deps]
+
+source_file="res://Resources/Sound/Music/Glitch 2.ogg"
+dest_files=[ "res://.import/Glitch 2.ogg-6655bc26dff061e1204d395c7a208a04.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

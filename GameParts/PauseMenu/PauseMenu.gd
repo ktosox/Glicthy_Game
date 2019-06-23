@@ -12,6 +12,5 @@ func _on_Button_moar_pressed():
 
 
 func _on_Button_exit_pressed():
-	get_tree().paused = false
-	#GM.changeToMainMenu()
-	self.queue_free()
+	get_tree().quit()
+	pass

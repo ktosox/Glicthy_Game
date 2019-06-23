@@ -12,7 +12,7 @@ var bombReady = true
 
 var invunrability = false
 
-const MOTION_SPEED = 12
+const MOTION_SPEED = 10
 
 
 var glitchOffset = Vector2()
@@ -72,6 +72,12 @@ func skillPhase():
 	$Camera2D/Overlay.skillPhaseUsed()
 	invunrableStart()
 	$AnimationPlayer.play("skillPhase")
+	var player = AudioStreamPlayer.new()
+	self.add_child(player)
+	player.stream = load("res://Resources/Sound/SFX/Phase_Ability.wav")
+	player.set_bus("SFX")
+	player.set_volume_db(-6.0)
+	player.play()
 
 
 func skillBomb():
@@ -82,6 +88,12 @@ func skillBomb():
 	bombReady = false
 	$Camera2D/Overlay.skillBombUsed()
 	$TimerBombCooldown.start()
+	var player = AudioStreamPlayer.new()
+	self.add_child(player)
+	player.stream = load("res://Resources/Sound/SFX/Explosion_Ability.wav")
+	player.set_bus("SFX")
+	player.set_volume_db(-6.0)
+	player.play()
 	#seperate scene that fires a spray of bullets
 	#an update to overlay that visualises skill cooldown goes here
 	pass
@@ -96,6 +108,12 @@ func fire_bullet():
 	newBullet.global_position.x += sin($PlayerGun.global_rotation) *70
 	newBullet.global_position.y -= cos($PlayerGun.global_rotation) *70
 	get_parent().add_child(newBullet)
+	var player = AudioStreamPlayer.new()
+	self.add_child(player)
+	player.stream = load("res://Resources/Sound/SFX/Player_Shoot.wav")
+	player.set_bus("SFX")
+	player.set_volume_db(-6.0)
+	player.play()
 
 func invunrableStart():
 	invunrability = true
@@ -117,11 +135,17 @@ func _on_TimerPhaseCooldown_timeout():
 	phaseReady = true
 
 func damange():
-	GM.playerHP -=1
-	if(GM.playerHP<1):
+	GM.playerHP -= 1
+	if(GM.playerHP <= 0):
 		GM.lose_game()
 	$AnimationPlayer.play("damangeFlash")
 	invunrableStart()
+	var player = AudioStreamPlayer.new()
+	self.add_child(player)
+	player.stream = load("res://Resources/Sound/SFX/Player_Damage.wav")
+	player.set_bus("SFX")
+	player.set_volume_db(-6.0)
+	player.play()
 	updateHP(GM.playerHP)
 
 func _on_HitBox_body_entered(body):
