@@ -41,13 +41,11 @@ func _on_TimerFire_timeout():
 	else:
 		fireBullet()
 		lifeTime -= 1
-	pass # Replace with function body.
 
 
 func _on_TimerDying_timeout():
 	self.queue_free()
-	pass # Replace with function body.
-	
+
 
 func pop():
 	print("bomb was poped, why?")

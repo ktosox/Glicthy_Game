@@ -13,7 +13,7 @@
 radius = 40.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 660.681
+radius = 975.5
 
 [sub_resource type="Animation" id=3]
 resource_name = "canon_extend"
@@ -106,8 +106,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.9, 1, 1.2, 1.3, 1.4, 1.7, 1.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "setTarget"
@@ -128,7 +128,25 @@ tracks/0/keys = {
 "method": "canonFire"
 }, {
 "args": [  ],
-"method": "scanForPlayer"
+"method": "setTarget"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "canonFire"
+}, {
+"args": [  ],
+"method": "setTarget"
 }, {
 "args": [  ],
 "method": "canonFire"
