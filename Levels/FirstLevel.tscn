@@ -101,8 +101,13 @@ volume_db = -6.0
 autoplay = true
 bus = "Music"
 
+<<<<<<< HEAD
 [node name="WIN ZONE" parent="." instance=ExtResource( 8 )]
 position = Vector2( 3648, 2432 )
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
 position = Vector2( 128, 128 )
+=======
+[node name="WIN ZONE" parent="." instance=ExtResource( 9 )]
+position = Vector2( 3648, 2432 )
+>>>>>>> master
