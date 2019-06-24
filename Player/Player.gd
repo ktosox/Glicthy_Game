@@ -150,6 +150,7 @@ func damange():
 	player.stream = load("res://Resources/Sound/SFX/Player_Damage.wav")
 	player.set_bus("SFX")
 	player.set_volume_db(4.0)
+	player.pitch_scale = 0.5
 	player.play()
 	updateHP(GM.playerHP)
 

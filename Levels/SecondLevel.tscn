@@ -8,12 +8,12 @@
 [ext_resource path="res://GameParts/Environment/WhiteSpace.tres" type="TileSet" id=6]
 [ext_resource path="res://Entities/Gates/GateA.tscn" type="PackedScene" id=7]
 [ext_resource path="res://GameParts/Environment/Platform.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Entities/Turrets/TurretA.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Entities/Enemies/EnemyA.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Entities/Enemies/EnemyB.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Resources/Sound/Music/Glitch 2.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Player/WIN ZONE.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/Turrets/TurretA.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemies/EnemyA.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Enemies/EnemyB.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Resources/Sound/Music/Glitch 2.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Player/WIN ZONE.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=14]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -92,66 +92,63 @@ GateNumber = 5
 position = Vector2( 1808.73, 1988.8 )
 GateNumber = 1
 
-[node name="Player" parent="." instance=ExtResource( 9 )]
-position = Vector2( 2319.11, 1936.99 )
-
-[node name="TurretA" parent="." instance=ExtResource( 10 )]
+[node name="TurretA" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1226.39, 370.645 )
 GateNumber = 3
 
-[node name="EnemyA" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA" parent="." instance=ExtResource( 10 )]
 position = Vector2( 538.617, 1278.87 )
 
-[node name="EnemyA2" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 645.775, 580.016 )
 
-[node name="EnemyA3" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 812.258, 3974.04 )
 
-[node name="EnemyA4" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA4" parent="." instance=ExtResource( 10 )]
 position = Vector2( 235.501, 4024.74 )
 
-[node name="EnemyA5" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA5" parent="." instance=ExtResource( 10 )]
 position = Vector2( 843.948, 3150.1 )
 
-[node name="EnemyA6" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA6" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1389.01, 2224.75 )
 
-[node name="EnemyA7" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA7" parent="." instance=ExtResource( 10 )]
 position = Vector2( 761.554, 2744.46 )
 
-[node name="EnemyA8" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA8" parent="." instance=ExtResource( 10 )]
 position = Vector2( 267.19, 3270.52 )
 
-[node name="EnemyA14" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA14" parent="." instance=ExtResource( 10 )]
 position = Vector2( 4299.78, 2596.74 )
 
-[node name="EnemyB2" parent="." instance=ExtResource( 12 )]
+[node name="EnemyB2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1736.31, 888.134 )
 
-[node name="EnemyB3" parent="." instance=ExtResource( 12 )]
+[node name="EnemyB3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1730.29, 189.688 )
 
-[node name="EnemyB4" parent="." instance=ExtResource( 12 )]
+[node name="EnemyB4" parent="." instance=ExtResource( 11 )]
 position = Vector2( 4742.86, 435.545 )
 
-[node name="EnemyA9" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA9" parent="." instance=ExtResource( 10 )]
 position = Vector2( 3018.92, 194.701 )
 rotation = -3.14159
 
-[node name="EnemyA10" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA10" parent="." instance=ExtResource( 10 )]
 position = Vector2( 3386.53, 929.908 )
 rotation = -3.14159
 
-[node name="EnemyA11" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA11" parent="." instance=ExtResource( 10 )]
 position = Vector2( 4349.9, 1367.23 )
 rotation = -3.14159
 
-[node name="EnemyA12" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA12" parent="." instance=ExtResource( 10 )]
 position = Vector2( 3969.92, 3083.77 )
 rotation = -3.14159
 
-[node name="EnemyA13" parent="." instance=ExtResource( 11 )]
+[node name="EnemyA13" parent="." instance=ExtResource( 10 )]
 position = Vector2( 4726.69, 3603.36 )
 rotation = -3.14159
 
@@ -159,19 +156,22 @@ rotation = -3.14159
 position = Vector2( 4772.12, 1547.05 )
 GateNumber = 4
 
-[node name="EnemyB" parent="." instance=ExtResource( 12 )]
+[node name="EnemyB" parent="." instance=ExtResource( 11 )]
 position = Vector2( 850.619, 3720.85 )
 
-[node name="TurretA2" parent="." instance=ExtResource( 10 )]
+[node name="TurretA2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 4837.48, 1955.7 )
 
-[node name="TurretA3" parent="." instance=ExtResource( 10 )]
+[node name="TurretA3" parent="." instance=ExtResource( 9 )]
 position = Vector2( 3808.43, 1978.49 )
 GateNumber = 5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 13 )
+stream = ExtResource( 12 )
 autoplay = true
 
-[node name="WIN ZONE" parent="." instance=ExtResource( 14 )]
+[node name="WIN ZONE" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2593.39, 3586.72 )
+
+[node name="Player" parent="." instance=ExtResource( 14 )]
+position = Vector2( 2319.11, 1936.99 )

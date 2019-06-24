@@ -49,10 +49,8 @@ func pop():
 func setTarget():
 	$Head.rotation = atan2( -GM.playerCurrent.global_position.x + global_position.x, GM.playerCurrent.global_position.y  -global_position.y)
 	$Head.rotation += deg2rad(180)
-	#print("Head rotation: ",$Head.rotation) 
 	target.x = -sin(atan2(global_position.x - GM.playerCurrent.global_position.x, global_position.y - GM.playerCurrent.global_position.y)) *10*GM.BS
 	target.y = -cos(atan2(global_position.x - GM.playerCurrent.global_position.x, global_position.y - GM.playerCurrent.global_position.y)) *10*GM.BS
-	#print("target: ", target)
 
 func damange():
 	HP = HP - 1
@@ -71,12 +69,8 @@ func startDying():
 
 func _on_TimerDying_timeout():
 	queue_free()
-	pass # Replace with function body.
-
 
 func _on_HitBox_body_entered(body):
 	if(body.get_collision_layer_bit(0)):
 		damange()
 		body.pop()
-
-

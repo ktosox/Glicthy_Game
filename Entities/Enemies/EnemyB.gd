@@ -44,7 +44,9 @@ func stopWalking():
 func startDying():
 	$HitBox.queue_free()
 	$TimerDying.start()
-	$Sprite.modulate.a = 0.2
+	$AnimationPlayer.stop()
+	$Sprite.queue_free()
+	$Polygon2D.queue_free()
 	$ExplosionC.emitting = true
 
 func scanForPlayer():

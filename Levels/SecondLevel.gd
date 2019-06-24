@@ -8,6 +8,7 @@ extends Node2D
 func _ready():
 
 	GM.playerHP = 3
+	GM.playerCurrent.updateHP(GM.playerHP)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
