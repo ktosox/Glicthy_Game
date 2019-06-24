@@ -178,6 +178,5 @@ func _on_TimerBulletCooldown_timeout():
 func _on_TimerBombCooldown_timeout():
 	bombReady = true
 
-
 func _on_TimerPauseCooldown_timeout():
 	pauseReady = true

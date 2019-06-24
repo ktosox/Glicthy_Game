@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var lifeTime = 12
-var speed = 250
+var speed = 200
 
 var bulletPlayerScene = load("res://Entities/Bullets/BulletPlayer.tscn")
 
@@ -13,7 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func fireBullet():
+func fireBullet(var volume = -6.0):
 	var newBullet = bulletPlayerScene.instance()
 	newBullet.global_rotation = $Sprite.global_rotation
 	newBullet.global_position = $Sprite/Position2D.global_position
@@ -22,12 +22,17 @@ func fireBullet():
 	self.add_child(player)
 	player.stream = load("res://Resources/Sound/SFX/Player_Shoot.wav")
 	player.set_bus("SFX")
-	player.set_volume_db(-6.0)
+	player.set_volume_db(volume)
 	player.play()
 
 func explode():
+	$Sprite.queue_free()
+	var angle = 12
+	while (angle > 0):
+		angle -=1
+		fireBullet(-17.0)
+		global_rotation+=4
 	$TimerDying.start()
-	pass
 
 func _on_TimerFire_timeout():
 	if(lifeTime<0):

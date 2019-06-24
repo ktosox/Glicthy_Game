@@ -4,7 +4,7 @@
 [ext_resource path="res://Resources/Artwork/Overlay/SciFi_Skill_p_26.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Artwork/Overlay/SciFi_Skill_p_03.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "fadeIn"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -22,32 +22,32 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=2]
 length = 13.0
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:self_modulate")
+tracks/0/path = NodePath("TextureRect/ColorRect:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 13 ),
-"transitions": PoolRealArray( 2, -0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.01 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "used"
 length = 9.0
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:self_modulate")
+tracks/0/path = NodePath("TextureRect/ColorRect:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 9 ),
+"times": PoolRealArray( 0, 8.98524 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0.133333, 1, 1 ), Color( 0, 0.133333, 1, 0 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.01 ) ]
 }
 
 [node name="Overlay" type="Control"]
@@ -64,7 +64,7 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Curtain"]
 autoplay = "fadeIn"
-anims/fadeIn = SubResource( 3 )
+anims/fadeIn = SubResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -166,7 +166,6 @@ anchor_bottom = 1.0
 margin_bottom = 60.0
 
 [node name="SkillPhase" type="Panel" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer"]
-self_modulate = Color( 0, 0, 0, 0 )
 margin_left = 4.0
 margin_top = 5.0
 margin_right = 54.0
@@ -179,12 +178,17 @@ size_flags_vertical = 4
 anims/used = SubResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/SkillPhase"]
-show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/SkillPhase/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1, 0.01 )
+color = Color( 0.0705882, 0.0705882, 0.0705882, 0.917647 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer"]
 margin_left = 58.0
@@ -203,7 +207,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/Skill2"]
-anims/used = SubResource( 4 )
+anims/used = SubResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/Skill2"]
 show_behind_parent = true
@@ -212,6 +216,12 @@ anchor_bottom = 1.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/Skill2/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1, 0.01 )
+color = Color( 0.0705882, 0.0705882, 0.0705882, 0.917647 )
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer"]
 margin_left = 118.0
