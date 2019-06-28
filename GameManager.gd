@@ -3,6 +3,8 @@ extends Node
 
 var playerHP = 3
 
+var firstGo = true
+
 var playerCurrent 
 var currentLevel = 1
 

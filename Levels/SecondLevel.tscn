@@ -174,5 +174,4 @@ stream = ExtResource( 13 )
 autoplay = true
 
 [node name="Player" parent="." instance=ExtResource( 14 )]
-visible = false
 position = Vector2( 2319.11, 1936.99 )

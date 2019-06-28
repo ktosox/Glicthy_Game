@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player/Overlay.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Artwork/Overlay/SciFi_Skill_p_26.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Artwork/Overlay/SciFi_Skill_p_03.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Artwork/Overlay/instruction.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Artwork/Overlay/SciFi_Skill_p_26.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Artwork/Overlay/SciFi_Skill_p_03.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fadeIn"
@@ -65,6 +66,20 @@ color = Color( 0, 0, 0, 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Curtain"]
 autoplay = "fadeIn"
 anims/fadeIn = SubResource( 1 )
+
+[node name="Tutorial" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -643.326
+margin_top = -295.638
+margin_right = 892.674
+margin_bottom = 568.362
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -180,7 +195,7 @@ anims/used = SubResource( 2 )
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/SkillPhase"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 expand = true
 stretch_mode = 1
 
@@ -213,7 +228,7 @@ anims/used = SubResource( 3 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 1
 
@@ -234,3 +249,8 @@ margin_top = 844.0
 margin_right = 1536.0
 margin_bottom = 864.0
 rect_min_size = Vector2( 0, 20 )
+
+[node name="TimerTutorial" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+[connection signal="timeout" from="TimerTutorial" to="." method="_on_TimerTutorial_timeout"]
