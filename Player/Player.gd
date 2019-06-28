@@ -16,10 +16,6 @@ var pauseReady = true
 
 const MOTION_SPEED = 10
 
-
-var glitchOffset = Vector2()
-var glitchState = 1
-
 func _input(event):
 	if(event.is_class("InputEventMouseButton")):
 		if(event.button_index == 1 && event.is_pressed() && bulletReady):
@@ -32,26 +28,14 @@ func _input(event):
 	if event.is_action_pressed("skill_phase"):
 		if(phaseReady):
 			skillPhase()
-		else:
-			pass
 	if event.is_action_pressed("skill_bomb"):
 		if(bombReady):
 			skillBomb()
-		else:
-			pass
 
 func _ready():
 	GM.playerCurrent = self
-	
-
 
 func _physics_process(delta):
-#	glitchOffset.x = glitchOffset.x + delta * glitchState *30
-#	$Sprite.material.set_shader_param("offset",glitchOffset)
-#	if (glitchOffset.x>50.0):
-#		glitchState = -1
-#	if (glitchOffset.x<-50.0):
-#		glitchState = 1
 	var motion = Vector2()
 	
 	if Input.is_action_pressed("ui_up"):
@@ -99,10 +83,6 @@ func skillBomb():
 	player.set_bus("SFX")
 	player.set_volume_db(-6.0)
 	player.play()
-	#seperate scene that fires a spray of bullets
-	#an update to overlay that visualises skill cooldown goes here
-	pass
-	
 
 func fire_bullet():
 	bulletReady = false

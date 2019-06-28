@@ -6,6 +6,7 @@ render_mode blend_mix;
 
 uniform float radius = 5.0;
 uniform vec4  modulate : hint_color;
+uniform vec2 bottom = vec2(5.0,0.0);
 
 void fragment() {
 	vec2 ps = TEXTURE_PIXEL_SIZE;
@@ -21,12 +22,13 @@ void fragment() {
 	shadow += texture(TEXTURE, UV + vec2(radius, radius) * ps);
 	shadow /= 8.0;
 	shadow *= modulate;
-
 	vec4 col = texture(TEXTURE, UV);
 	COLOR = mix(shadow, col, col.a);
+	COLOR.a = COLOR.a *( 0.5 / (UV.y * abs(cos(TIME*10.0))));
 }"
 
 [resource]
 shader = SubResource( 1 )
 shader_param/radius = 4.0
 shader_param/modulate = Color( 0, 0.733333, 0.321569, 1 )
+shader_param/bottom = Vector2( 0.5, 1.08 )
